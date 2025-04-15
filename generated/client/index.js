@@ -126,7 +126,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\be\\git\\rts\\demo-api\\generated\\client",
+      "value": "C:\\Users\\brian\\git\\rts-cmk\\the-amazing-api\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -140,12 +140,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\be\\git\\rts\\demo-api\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\brian\\git\\rts-cmk\\the-amazing-api\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../prisma",
   "clientVersion": "6.6.0",

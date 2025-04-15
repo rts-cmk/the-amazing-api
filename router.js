@@ -1,23 +1,29 @@
 import Router from "express"
-const router = Router()
 import { readdir } from "fs"
-import { join } from "path"
+import { dirname, join } from "path"
+import { fileURLToPath, pathToFileURL } from "url"
 import { requestLogger } from "./config/winston.js"
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+const router = Router()
 
 router.use(requestLogger)
 
-readdir(join(import.meta.dirname, "routes"), routesIterator)
+readdir(join(__dirname, "routes"), routesIterator)
 
 function routesIterator(err, files) {
 	if (err) {
 		throw err
 	}
 
-	files.forEach(file => requireRoute(file))
+	files.forEach(async file => await requireRoute(file))
 }
 
-function requireRoute(file) {
-	require(join(import.meta.dirname, "routes", file))(router)
+async function requireRoute(file) {
+	const fullPath = join(__dirname, "routes", file)
+	const route = await import(pathToFileURL(fullPath))
+	route.default(router)
 }
 
 export default router

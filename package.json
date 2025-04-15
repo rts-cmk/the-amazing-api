@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon bin/www",
-    "start": "node bin/www"
+    "start": "node bin/www",
+    "generate-docs": "npx insomnia-documenter --config ./public/docs/insomnia-export.json -o ./public/docs"
   },
   "keywords": [],
   "author": "",

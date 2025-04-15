@@ -38,7 +38,6 @@ export async function getAllProducts(request, response, next) {
 }
 
 export async function getProductBySlug(request, response, next) {
-	console.log("hooray")
 	try {
 		const product = await prisma.product.findUnique({ where: { slug: request.params.slug } })
 

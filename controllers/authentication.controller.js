@@ -19,8 +19,10 @@ export async function createToken(request, response, next) {
 	})
 
 	try {
-		const user = prisma.user.findUnique({ where: { email: validated.data.email } })
+		const user = await prisma.user.findUnique({ where: { email: validated.data.email } })
 		if (!user) return response.status(401).end()
+
+		console.log(user)
 
 		const verified = compareSync(validated.data.password, user.password)
 

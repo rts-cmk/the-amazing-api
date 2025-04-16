@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+
+body {
+	font-family: "Open Sans", Arial, sans-serif;
 }
 
 #output {
@@ -9,4 +14,101 @@
 	font-family: monospace;
 	background-color: #f4f4f4;
 	padding: 1rem;
+	font-size: 1rem;
+	width: 100%;
+	overflow-x: scroll;
+}
+
+.siteHeader {
+	background-color: #206f89;
+	color: #fff;
+	padding: 1rem;
+	& .siteHeader__logo {
+		font-size: 1.5rem;
+		font-weight: bold;
+		text-decoration: none;
+		color: #fff;
+	}
+	& .container {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+	}
+	.primaryNavigation {
+		& ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			gap: 1rem;
+			& .primaryNavigation__link {
+				color: #fff;
+				text-decoration: none;
+				&.primaryNavigation__link--active {
+					font-weight: bold;
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}
+
+.container {
+	max-width: 1024px;
+	margin: 0 auto;
+	padding: 1rem;
+}
+
+.lead {
+	font-size: 1.5rem;
+	margin-bottom: 1rem;
+	&.narrow {
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.center {
+	text-align: center;
+}
+
+a {
+	color: #206f89;
+	text-decoration: none;
+}
+
+#apiTestForm {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 1rem;
+	& label {
+		display: flex;
+		align-items: center;
+		& span {
+			background-color: #f4f4f4;
+			border: 1px solid #ccc;
+			border-right: none;
+			padding: 0.5rem;
+			border-top-left-radius: 0.5rem;
+			border-bottom-left-radius: 0.5rem;
+		}
+		& input {
+			font-family: inherit;
+			font-size: inherit;
+			padding: 0.5rem;
+			width: 400px;
+			border: 1px solid #ccc;
+			border-left: none;
+		}
+	}
+	& button {
+		padding: 0.5rem;
+		background-color: #206f89;
+		color: #fff;
+		border: none;
+		border-top-right-radius: 0.5rem;
+		border-bottom-right-radius: 0.5rem;
+		cursor: pointer;
+	}
 }

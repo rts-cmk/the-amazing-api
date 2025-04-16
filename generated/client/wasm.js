@@ -132,15 +132,44 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.MediaScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  width: 'width',
+  height: 'height',
+  duration: 'duration',
+  type: 'type',
+  mimetype: 'mimetype',
+  size: 'size',
+  url: 'url',
+  filename: 'filename',
+  originalFilename: 'originalFilename',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+exports.MediaType = exports.$Enums.MediaType = {
+  IMAGE: 'IMAGE',
+  DOCUMENT: 'DOCUMENT',
+  VIDEO: 'VIDEO',
+  AUDIO: 'AUDIO',
+  OTHER: 'OTHER'
+};
 
 exports.Prisma.ModelName = {
   Product: 'Product',
-  User: 'User'
+  User: 'User',
+  Media: 'Media'
 };
 
 /**

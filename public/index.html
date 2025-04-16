@@ -1,20 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>The Amazing API</title>
 	<link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-	<form id="apiTestForm">
-		<label>
-			http://localhost:4000/api/v1/
-			<input type="text" name="endpoint">
-		</label>
-		<button type="submit">Test</button>
-	</form>
-	<div id="output"></div>
+	<header class="siteHeader">
+		<div class="container">
+			<a href="/" class="siteHeader__logo">The Amazing API</a>
+			<nav class="primaryNavigation">
+				<ul>
+					<li><a href="#" class="primaryNavigation__link primaryNavigation__link--active">Home</a></li>
+					<li><a href="#" class="primaryNavigation__link">About</a></li>
+					<li><a href="/docs" class="primaryNavigation__link">API v1</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<main>
+		<section>
+			<div class="container">
+				<p class="lead narrow center">
+					All the data you need to learn and test your knowledge of APIs in one place,
+					easily accessible through a modern RESTful API.
+				</p>
+				<p class="lead center">
+					<a href="/docs">Check out the docs!</a>
+				</p>
+			</div>
+		</section>
+		<section>
+			<div class="container">
+				<h1 class="center">Try it now!</h1>
+				<form id="apiTestForm">
+					<label>
+						<span>http://localhost:4000/api/v1/</span>
+						<input type="text" name="endpoint">
+					</label>
+					<button type="submit">Submit</button>
+				</form>
+				<p>Need a hint? Try <a href="">/products</a>, <a href="">/media</a> or <a href="">/posts</a></p>
+				<p>Direct link to results: <a href="/api/v1/products" id="absoluteLink">/api/v1/products</a></p>
+				<h2>Results for <span id="endpoint"></span></h2>
+				<div id="output"></div>
+			</div>
+		</section>
+	</main>
 	<script src="./app.js" defer></script>
 </body>
+
 </html>

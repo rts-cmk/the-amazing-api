@@ -1,13 +1,16 @@
-export async function getMe(request, response, next) {
+import prisma from "../config/prisma.js"
 
+export async function getMe(request, response, next) {
 	try {
-		const user = await User.findOne({
+		const user = await prisma.user.findUnique({
 			where: {
-				$or: {
-					username: validated.data.username,
-					email: validated.data.username,
-				}
-			}
+				email: response.locals.user,
+			},
+			select: {
+				email: true,
+				createdAt: true,
+				updatedAt: true,
+			},
 		})
 
 		if (!user) {

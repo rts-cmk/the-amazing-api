@@ -9,8 +9,8 @@ export async function createUser(request, response, next) {
 	})
 
 	const validated = schema.safeParse({
-		email: request.fields.email,
-		password: request.fields.password,
+		email: request.body.email,
+		password: request.body.password,
 	})
 
 	if (!validated.success) {

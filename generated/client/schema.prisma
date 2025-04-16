@@ -15,7 +15,7 @@ datasource db {
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
+  id          String   @id @default(cuid(2))
   name        String
   slug        String   @unique
   description String
@@ -25,9 +25,34 @@ model Product {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(cuid(2))
   email     String   @unique
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Media {
+  id               String    @id @default(cuid(2))
+  name             String
+  description      String?
+  width            Int?
+  height           Int?
+  duration         Float?
+  type             MediaType
+  mimetype         String
+  size             Int // i bytes
+  url              String // hvor filen er tilgængelig
+  filename         String
+  originalFilename String
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+}
+
+enum MediaType {
+  IMAGE
+  DOCUMENT
+  VIDEO
+  AUDIO
+  OTHER
 }

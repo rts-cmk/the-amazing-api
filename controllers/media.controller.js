@@ -58,8 +58,6 @@ export async function createMedia(request, response, next) {
 		}
 
 		const type = getMediaType(validated.data.file.mimetype)
-		const width = type === "IMAGE" ? validated.data.file.width : null
-		const height = type === "IMAGE" ? validated.data.file.height : null
 	
 		try {
 			const media = await prisma.media.create({

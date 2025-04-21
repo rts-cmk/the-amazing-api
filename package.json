@@ -7,7 +7,11 @@
   "scripts": {
     "dev": "nodemon bin/www",
     "start": "node bin/www",
-    "generate-docs": "npx insomnia-documenter --config ./public/docs/insomnia-export.json -o ./public/docs"
+    "generate-docs": "npx insomnia-documenter --config ./public/docs/insomnia-export.json -o ./public/docs",
+    "reset-db": "rm -rf ./generated && rm -rf ./database.db && npx prisma generate && npx prisma db push && npx prisma db seed"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +27,7 @@
     "jose": "^6.0.10",
     "prisma": "^6.6.0",
     "sharp": "^0.34.1",
+    "uuid": "^11.1.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {

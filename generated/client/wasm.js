@@ -118,8 +118,15 @@ exports.Prisma.ProductScalarFieldEnum = {
   id: 'id',
   name: 'name',
   slug: 'slug',
+  sku: 'sku',
   description: 'description',
   price: 'price',
+  saleprice: 'saleprice',
+  weight: 'weight',
+  height: 'height',
+  width: 'width',
+  length: 'length',
+  stock: 'stock',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -128,6 +135,7 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
   password: 'password',
+  role: 'role',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -149,15 +157,65 @@ exports.Prisma.MediaScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.PostScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  slug: 'slug',
+  authorId: 'authorId',
+  published: 'published',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PostBlockScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  type: 'type',
+  content: 'content',
+  position: 'position',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RefreshTokenScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  userId: 'userId',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt',
+  revoked: 'revoked'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+exports.Role = exports.$Enums.Role = {
+  USER: 'USER',
+  ADMIN: 'ADMIN',
+  EDITOR: 'EDITOR'
+};
+
 exports.MediaType = exports.$Enums.MediaType = {
   IMAGE: 'IMAGE',
   DOCUMENT: 'DOCUMENT',
@@ -166,10 +224,22 @@ exports.MediaType = exports.$Enums.MediaType = {
   OTHER: 'OTHER'
 };
 
+exports.BlockType = exports.$Enums.BlockType = {
+  HEADING: 'HEADING',
+  TEXT: 'TEXT',
+  IMAGE: 'IMAGE',
+  QUOTE: 'QUOTE',
+  CODE: 'CODE',
+  VIDEO: 'VIDEO'
+};
+
 exports.Prisma.ModelName = {
   Product: 'Product',
   User: 'User',
-  Media: 'Media'
+  Media: 'Media',
+  Post: 'Post',
+  PostBlock: 'PostBlock',
+  RefreshToken: 'RefreshToken'
 };
 
 /**

@@ -39,7 +39,14 @@ export async function getAllProducts(request, response, next) {
 
 export async function getProductBySlug(request, response, next) {
 	try {
-		const product = await prisma.product.findUnique({ where: { slug: request.params.slug } })
+		const product = await prisma.product.findUnique({
+			where: {
+				slug: request.params.slug
+			},
+			include: {
+				Media: true
+			}
+		})
 
 		if (!product) return response.status(404).end()
 
@@ -54,12 +61,20 @@ export async function createProduct(request, response, next) {
 	const schema = z.object({
 		name: z.string().min(1),
 		description: z.string().min(1),
-		price: z.number()
+		sku: z.string().min(1),
+		price: z.number(),
+		saleprice: z.number().optional(),
+		weight: z.number().optional(),
+		height: z.number().optional(),
+		width: z.number().optional(),
+		length: z.number().optional(),
+		stock: z.number().positive().optional()
 	})
 
 	const validated = schema.safeParse({
 		name: request.fields.name,
 		description: request.fields.description,
+		sku: request.fields.sku,
 		price: parseFloat(request.fields.price)
 	})
 
@@ -74,8 +89,14 @@ export async function createProduct(request, response, next) {
 			data: {
 				name: validated.data.name,
 				slug: generateSlug(validated.data.name),
+				sku: validated.data.sku,
 				description: validated.data.description,
 				price: validated.data.price,
+				weight: parseFloat(validated.data.weight),
+				height: parseFloat(validated.data.height),
+				width: parseFloat(validated.data.width),
+				length: parseFloat(validated.data.length),
+				stock: parseInt(validated.data.stock)
 			}
 		})
 		response.status(201).json(product)

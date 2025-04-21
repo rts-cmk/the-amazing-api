@@ -11,25 +11,36 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = "file:../storage/database.db"
+  url      = "file:../database.db"
 }
 
 model Product {
   id          String   @id @default(cuid(2))
   name        String
   slug        String   @unique
+  sku         String   @unique
   description String
   price       Float
+  saleprice   Float?
+  weight      Float?
+  height      Float?
+  width       Float?
+  length      Float?
+  stock       Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  Media       Media[]
 }
 
 model User {
-  id        String   @id @default(cuid(2))
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id            String         @id @default(cuid(2))
+  email         String         @unique
+  password      String
+  role          Role           @default(USER)
+  posts         Post[]
+  refreshTokens RefreshToken[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
 }
 
 model Media {
@@ -47,6 +58,49 @@ model Media {
   originalFilename String
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
+  product          Product[]
+}
+
+model Post {
+  id        String      @id @default(cuid(2))
+  title     String
+  slug      String      @unique
+  blocks    PostBlock[]
+  author    User        @relation(fields: [authorId], references: [id])
+  authorId  String
+  published Boolean     @default(false)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model PostBlock {
+  id        String    @id @default(cuid(2))
+  post      Post      @relation(fields: [postId], references: [id])
+  postId    String
+  type      BlockType
+  content   Json // Rich content depending on the type
+  position  Int // Order of the block in the post
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  revoked   Boolean  @default(false)
+}
+
+enum BlockType {
+  HEADING
+  TEXT
+  IMAGE
+  QUOTE
+  CODE
+  VIDEO
 }
 
 enum MediaType {
@@ -55,4 +109,10 @@ enum MediaType {
   VIDEO
   AUDIO
   OTHER
+}
+
+enum Role {
+  USER
+  ADMIN
+  EDITOR
 }

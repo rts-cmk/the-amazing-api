@@ -4,10 +4,11 @@ export async function getMe(request, response, next) {
 	try {
 		const user = await prisma.user.findUnique({
 			where: {
-				email: response.locals.user,
+				id: response.locals.user,
 			},
 			select: {
 				email: true,
+				role: true,
 				createdAt: true,
 				updatedAt: true,
 			},

@@ -1,7 +1,7 @@
 import { z } from "zod"
-import prisma from "../config/prisma.js"
 import { compareSync } from "bcrypt"
-import { EncryptJWT, base64url } from "jose"
+import prisma from "../config/prisma.js"
+import { generateAccessToken, generateRefreshToken } from "../lib/tokens.js"
 
 export async function createToken(request, response, next) {
 	const schema = z.object({
@@ -19,26 +19,57 @@ export async function createToken(request, response, next) {
 	})
 
 	try {
-		const user = await prisma.user.findUnique({ where: { email: validated.data.email } })
+		const user = await prisma.user.findUnique({ where: { email: validated.data.email }})
 		if (!user) return response.status(401).end()
 
 		const verified = compareSync(validated.data.password, user.password)
 
 		if (!verified) return response.status(401).end()
 
-		const secret = base64url.decode("cc7e0d44fd473002f1c42167459001140ec6389asd3")
-
-		const token = await new EncryptJWT({
-			user: user.email
+		const accessToken = await generateAccessToken(user)
+		const { token: refreshToken, expiresAt } = await generateRefreshToken()
+		
+		await prisma.refreshToken.create({
+			data: {
+				token: refreshToken,
+				expiresAt,
+				userId: user.id
+			}
 		})
-			.setProtectedHeader({ alg: "dir", enc: "A256GCM" })
-			.setIssuedAt()
-			.setExpirationTime("1D")
-			.encrypt(secret)
 
 		response.status(201).json({
-			token
+			accessToken,
+			refreshToken
 		})
+	} catch (error) {
+		console.error(error)
+		response.status(500).end()
+	}
+}
+
+export async function refreshToken(request, response, next) {
+	const schema = z.object({
+		refreshToken: z.string().min(1)
+	})
+
+	const validated = schema.safeParse({
+		refreshToken: request.body.refreshToken
+	})
+
+	if (!validated.success) return response.status(400).json({
+		...validated.error.format()
+	})
+
+	try {
+		const refreshToken = await prisma.refreshToken.findUnique({ where: { token: validated.data.refreshToken } })
+		if (!refreshToken) return response.status(401).end()
+
+		const user = await prisma.user.findUnique({ where: { id: refreshToken.userId } })
+		if (!user) return response.status(401).end()
+
+		const accessToken = await generateAccessToken(user)
+
+		response.status(201).json({ accessToken })
 	} catch (error) {
 		console.error(error)
 		response.status(500).end()

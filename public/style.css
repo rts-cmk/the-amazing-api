@@ -105,6 +105,13 @@ a {
 			width: 400px;
 			border: 1px solid #ccc;
 			border-left: none;
+			outline: none;
+		}
+		& input:focus, input:active {
+			border: 1px solid #206f89;
+			box-shadow: 0 0 0.2rem 0.2rem rgba(32, 111, 137, 0.25);
+			border-left: none;
+			border-right: none;
 		}
 	}
 	& button {

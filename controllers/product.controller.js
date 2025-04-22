@@ -75,7 +75,13 @@ export async function createProduct(request, response, next) {
 		name: request.fields.name,
 		description: request.fields.description,
 		sku: request.fields.sku,
-		price: parseFloat(request.fields.price)
+		price: parseFloat(request.fields.price),
+		saleprice: parseFloat(request.fields.saleprice),
+		weight: parseFloat(request.fields.weight),
+		height: parseFloat(request.fields.height),
+		width: parseFloat(request.fields.width),
+		length: parseFloat(request.fields.length),
+		stock: parseInt(request.fields.stock)
 	})
 
 	if (!validated.success) {

@@ -68,7 +68,7 @@ model Post {
   blocks    PostBlock[]
   author    User        @relation(fields: [authorId], references: [id])
   authorId  String
-  published Boolean     @default(false)
+  published DateTime?
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
 }

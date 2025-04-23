@@ -39,3 +39,10 @@ export async function isSelfOrAdmin(request, response, next) {
 	}
 	return next()
 }
+
+export async function isEditorOrAdmin(request, response, next) {
+	if (response.locals.role !== "ADMIN" && response.locals.role !== "EDITOR") {
+		return response.status(403).end()
+	}
+	return next()
+}

@@ -77,7 +77,65 @@ async function main() {
 		},
 	})
 
-	console.log({ admin, editor, user, images, product })
+	const post = await prisma.post.create({
+		data: {
+			title: "My first post",
+			slug: "my-first-post",
+			published: new Date(Date.now() + 3000).toISOString(),
+			author: {
+				connect: {
+					id: editor.id,
+				},
+			},
+			blocks: {
+				create: [
+					{
+						"type": "HEADING",
+						"content": {
+							"level": 2,
+							"text": "Hello, World!"
+						},
+						"position": 1
+					},
+					{
+						"type": "TEXT",
+						"content": {
+							"spans": [
+								{
+									"text": "This is such an exciting ",
+									"marks": []
+								},
+								{
+									"text": "blog post",
+									"marks": ["bold"]
+								},
+								{
+									"text": ". Would you like to know ",
+									"marks": []
+								},
+								{
+									"text": "more",
+									"marks": [
+										{
+											"type": "link",
+											"href": "https://google.com"
+										}
+									]
+								},
+								{
+									"text": "?",
+									"marks": []
+								}
+							]
+						},
+						"position": 2
+					}
+				]
+			},
+		},
+	})
+
+	console.log({ admin, editor, user, images, product, post })
 }
 
 main()

@@ -118,7 +118,7 @@ async function main() {
 									"marks": [
 										{
 											"type": "link",
-											"href": "https://google.com"
+											"href": "http://localhost:4000"
 										}
 									]
 								},

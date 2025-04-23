@@ -33,6 +33,13 @@ export async function isEditor(request, response, next) {
 	return next()
 }
 
+export async function isEditorOrAdmin(request, response, next) {
+	if (response.locals.role !== "EDITOR" && response.locals.roles !== "ADMIN") {
+		return response.status(403).end()
+	}
+	return next()
+}
+
 export async function isSelfOrAdmin(request, response, next) {
 	if (response.locals.role !== "ADMIN" && response.locals.user !== request.params.email) {
 		return response.status(403).end()

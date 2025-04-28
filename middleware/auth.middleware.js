@@ -34,7 +34,7 @@ export async function isEditor(request, response, next) {
 }
 
 export async function isEditorOrAdmin(request, response, next) {
-	if (response.locals.role !== "EDITOR" && response.locals.roles !== "ADMIN") {
+	if (response.locals.role !== "EDITOR" && response.locals.role !== "ADMIN") {
 		return response.status(403).end()
 	}
 	return next()

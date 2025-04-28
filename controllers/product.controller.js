@@ -24,7 +24,7 @@ export async function getAllProducts(request, response, next) {
 			})
 		])
 		const { next, prev } = getNavLinks({ count: count.id, limit, offset, url })
-		const results = products.map(product => ({ name: product.name, url: `${url}/${product.slug}` }))
+		const results = products.map(product => ({ name: product.name, slug: product.slug, url: `${url}/${product.slug}` }))
 		response.json({
 			count: count.id,
 			next,

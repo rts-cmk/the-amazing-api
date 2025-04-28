@@ -7,6 +7,7 @@ async function main() {
 				email: "admin@mail.com",
 				password: "admin",
 				role: "ADMIN",
+				name: "Admin Jensen",
 			},
 		}),
 		prisma.user.create({
@@ -14,6 +15,7 @@ async function main() {
 				email: "editor@mail.com",
 				password: "editor",
 				role: "EDITOR",
+				name: "Editor Jensen",
 			},
 		}),
 		prisma.user.create({
@@ -21,6 +23,7 @@ async function main() {
 				email: "user@mail.com",
 				password: "user",
 				role: "USER", // optional if your schema defaults to USER
+				name: "User Jensen",
 			},
 		}),
 	])
@@ -70,9 +73,14 @@ async function main() {
 			length: 12,
 			stock: 10,
 			Media: {
-				connect: {
-					id: images[0].id,
-				},
+				connect: [
+					{
+						id: images[0].id,
+					},
+					{
+						id: images[1].id,
+					},
+				]
 			}
 		},
 	})

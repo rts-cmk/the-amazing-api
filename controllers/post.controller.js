@@ -98,6 +98,7 @@ export async function getAllPosts(request, response, next) {
 
 		const results = posts.map(post => ({
 			title: post.title,
+			slug: post.slug,
 			url: `${url}/${post.slug}`
 		}))
 
@@ -143,6 +144,26 @@ export async function getSinglePost(request, response, next) {
 		})
 		if (!post) return response.status(404).end()
 		response.json(post)
+	} catch (error) {
+		console.error(error)
+		response.status(500).end()
+	}
+}
+
+export async function deletePost(request, response, next) {
+	try {
+		const post = await prisma.post.findUnique({
+			where: {
+				slug: request.params.slug
+			}
+		})
+		if (!post) return response.status(404).end()
+		await prisma.post.delete({
+			where: {
+				slug: request.params.slug
+			}
+		})
+		response.status(204).end()
 	} catch (error) {
 		console.error(error)
 		response.status(500).end()

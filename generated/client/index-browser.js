@@ -127,6 +127,32 @@ exports.Prisma.ProductScalarFieldEnum = {
   width: 'width',
   length: 'length',
   stock: 'stock',
+  published: 'published',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.OrderScalarFieldEnum = {
+  invoiceNumber: 'invoiceNumber',
+  accepted: 'accepted',
+  packaged: 'packaged',
+  shipped: 'shipped',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId'
+};
+
+exports.Prisma.OrderItemScalarFieldEnum = {
+  orderId: 'orderId',
+  productId: 'productId',
+  quantity: 'quantity'
+};
+
+exports.Prisma.ReviewScalarFieldEnum = {
+  id: 'id',
+  rating: 'rating',
+  content: 'content',
+  authorId: 'authorId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -174,6 +200,16 @@ exports.Prisma.PostBlockScalarFieldEnum = {
   type: 'type',
   content: 'content',
   position: 'position',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CommentScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  content: 'content',
+  userId: 'userId',
+  parentId: 'parentId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -236,10 +272,14 @@ exports.BlockType = exports.$Enums.BlockType = {
 
 exports.Prisma.ModelName = {
   Product: 'Product',
+  Order: 'Order',
+  OrderItem: 'OrderItem',
+  Review: 'Review',
   User: 'User',
   Media: 'Media',
   Post: 'Post',
   PostBlock: 'PostBlock',
+  Comment: 'Comment',
   RefreshToken: 'RefreshToken'
 };
 

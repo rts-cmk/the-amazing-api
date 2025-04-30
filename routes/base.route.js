@@ -3,6 +3,7 @@ export default function (router) {
 		response.json({
 			"me": "/api/v1/me",
 			"media": "/api/v1/media",
+			"posts": "/api/v1/posts",
 			"products": "/api/v1/products",
 			"users": "/api/v1/users",
 		})

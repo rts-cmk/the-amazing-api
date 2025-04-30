@@ -1,13 +1,13 @@
 {
   "name": "the-amazing-api",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon bin/www",
     "start": "node bin/www",
-    "generate-docs": "npx insomnia-documenter --config ./public/docs/insomnia-export.json -o ./public/docs",
+    "generate-v1-docs": "npx insomnia-documenter --config ./insomnia-export-v1.json -o ./public/docs/v1 && cp ./public/docs/_v1.html ./public/docs/v1/index.html && rm -f ./public/docs/v1/favicon.ico && cp ./public/images/the_amazing_api_logo.png ./public/docs/v1/logo.png",
     "reset-db": "rm -rf ./generated && rm -rf ./database.db && npx prisma generate && npx prisma db push && npx prisma db seed"
   },
   "prisma": {
@@ -20,6 +20,7 @@
     "@prisma/client": "^6.6.0",
     "bcrypt": "^5.1.1",
     "body-parser": "^2.2.0",
+    "cli-progress": "^3.12.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "express-formidable": "^1.2.0",

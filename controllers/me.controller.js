@@ -9,6 +9,7 @@ export async function getMe(request, response, next) {
 			select: {
 				email: true,
 				role: true,
+				name: true,
 				createdAt: true,
 				updatedAt: true,
 			},

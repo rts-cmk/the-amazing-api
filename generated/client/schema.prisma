@@ -15,10 +15,10 @@ datasource db {
 }
 
 model Product {
-  id          String   @id @default(cuid(2))
+  id          String      @id @default(cuid(2))
   name        String
-  slug        String   @unique
-  sku         String   @unique
+  slug        String      @unique
+  sku         String      @unique
   description String
   price       Float
   saleprice   Float?
@@ -26,10 +26,45 @@ model Product {
   height      Float?
   width       Float?
   length      Float?
-  stock       Int      @default(0)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  Media       Media[]
+  stock       Int         @default(0)
+  published   Boolean     @default(false)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  media       Media[]
+  orderItems  OrderItem[]
+}
+
+model Order {
+  invoiceNumber Int         @id @default(autoincrement())
+  accepted      Boolean     @default(false)
+  packaged      Boolean     @default(false)
+  shipped       Boolean     @default(false)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  userId        String
+  user          User        @relation(fields: [userId], references: [id])
+  orderItems    OrderItem[]
+}
+
+model OrderItem {
+  orderId   Int
+  productId String
+  quantity  Int
+
+  order   Order   @relation(fields: [orderId], references: [invoiceNumber])
+  product Product @relation(fields: [productId], references: [id])
+
+  @@id([orderId, productId]) // Composite primary key
+}
+
+model Review {
+  id        String   @id @default(cuid(2))
+  rating    Int
+  content   String
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model User {
@@ -39,7 +74,10 @@ model User {
   role          Role           @default(USER)
   name          String?
   posts         Post[]
+  comments      Comment[]
+  reviews       Review[]
   refreshTokens RefreshToken[]
+  orders        Order[]
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
 }
@@ -67,6 +105,7 @@ model Post {
   title     String
   slug      String      @unique
   blocks    PostBlock[]
+  comments  Comment[]
   author    User        @relation(fields: [authorId], references: [id])
   authorId  String
   published DateTime?
@@ -83,6 +122,20 @@ model PostBlock {
   position  Int // Order of the block in the post
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
+}
+
+model Comment {
+  id        String    @id @default(cuid(2))
+  postId    String
+  content   String
+  userId    String
+  parentId  String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  post      Post      @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user      User      @relation(fields: [userId], references: [id])
+  parent    Comment?  @relation("CommentReplies", fields: [parentId], references: [id])
+  replies   Comment[] @relation("CommentReplies")
 }
 
 model RefreshToken {

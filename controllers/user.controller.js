@@ -6,11 +6,13 @@ export async function createUser(request, response, next) {
 	const schema = z.object({
 		email: z.string().email(),
 		password: z.string().min(1),
+		name: z.string().min(1).optional(),
 	})
 
 	const validated = schema.safeParse({
 		email: request.body.email,
 		password: request.body.password,
+		name: request.body.name,
 	})
 
 	if (!validated.success) {
@@ -24,6 +26,13 @@ export async function createUser(request, response, next) {
 			data: {
 				email: validated.data.email,
 				password: validated.data.password,
+				name: validated.data.name,
+			},
+			select: {
+				email: true,
+				role: true,
+				name: true,
+				createdAt: true,
 			}
 		})
 		response.status(201).json(user)
@@ -42,12 +51,13 @@ export async function getAllUsers(request, response, next) {
 	const whereClause = search ? {
 		OR: [
 			{ email: { contains: search } },
-			{ role: { contains: search } }
+			{ role: { contains: search } },
+			{ name: { contains: search } }
 		]
 	} : {}
 	try {
 		const [users, count] = await Promise.all([
-			prisma.user.findMany({ select: { email: true, role: true }, where: whereClause, take: limit, skip: offset }),
+			prisma.user.findMany({ select: { email: true }, where: whereClause, take: limit, skip: offset }),
 			prisma.user.count({ select: { id: true }, where: whereClause })
 		])
 		const { next, prev } = getNavLinks({ count: count.id, limit, offset, url })
@@ -66,7 +76,19 @@ export async function getAllUsers(request, response, next) {
 
 export async function getUserByEmail(request, response, next) {
 	try {
-		const user = await prisma.user.findUnique({ select: { email: true, role: true, createdAt: true, updatedAt: true }, where: { email: request.params.email } })
+		const user = await prisma.user.findUnique({
+			select: {
+				email: true,
+				role: true,
+				name: true,
+				createdAt: true,
+				updatedAt: true,
+				refreshTokens: true,
+			},
+			where: {
+				email: request.params.email
+			}
+		})
 		if (!user) return response.status(404).end()
 		response.json(user)
 	} catch (error) {
@@ -79,11 +101,15 @@ export async function updateUserByEmail(request, response, next) {
 	const schema = z.object({
 		email: z.string().email().optional(),
 		password: z.string().min(1).optional(),
+		name: z.string().min(1).optional(),
+		role: z.enum(["USER", "EDITOR", "ADMIN"]).optional(),
 	})
 
 	const validated = schema.safeParse({
 		email: request.body.email,
 		password: request.body.password,
+		name: request.body.name,
+		role: request.body.role,
 	})
 
 	if (!validated.success) {
@@ -95,12 +121,14 @@ export async function updateUserByEmail(request, response, next) {
 	const data = {}
 	if (validated.data.email) data.email = validated.data.email
 	if (validated.data.password) data.password = validated.data.password
+	if (validated.data.name) data.name = validated.data.name
+	if (validated.data.role && response.locals.role === "ADMIN") data.role = validated.data.role
 
 	try {
 		const user = await prisma.user.update({
 			where: { email: request.params.email },
 			data,
-			select: { email: true, role: true, createdAt: true, updatedAt: true }
+			select: { email: true, role: true, name: true, createdAt: true, updatedAt: true }
 		})
 		response.json(user)
 	} catch (error) {

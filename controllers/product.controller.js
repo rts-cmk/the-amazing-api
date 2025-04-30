@@ -112,7 +112,77 @@ export async function getProductBySlug(request, response, next) {
 	}
 }
 
-export default function deleteProduct(request, response, next) {
+export async function updateProduct(request, response, next) {
+	const contentType = request.headers["content-type"]
+	const fieldOrBody = contentType.includes("multipart/form-data") ? request.fields : request.body
+
+	const schema = z.object({
+		name: z.string().min(1).optional(),
+		description: z.string().min(1).optional(),
+		sku: z.string().min(1).optional(),
+		price: z.number().optional(),
+		saleprice: z.number().optional(),
+		weight: z.number().optional(),
+		height: z.number().optional(),
+		width: z.number().optional(),
+		length: z.number().optional(),
+		stock: z.number().positive().optional(),
+		published: z.boolean().optional(),
+		slug: z.string().min(1)
+	})
+
+	const validated = schema.safeParse({
+		name: fieldOrBody.name,
+		description: fieldOrBody.description,
+		sku: fieldOrBody.sku,
+		price: fieldOrBody.price ? parseFloat(fieldOrBody.price) : undefined,
+		saleprice: parseFloat(fieldOrBody.saleprice),
+		weight: fieldOrBody.weight ? parseFloat(fieldOrBody.weight) : undefined,
+		height: fieldOrBody.height ? parseFloat(fieldOrBody.height) : undefined,
+		width: fieldOrBody.width ? parseFloat(fieldOrBody.width) : undefined,
+		length: fieldOrBody.length ? parseFloat(fieldOrBody.length) : undefined,
+		stock: fieldOrBody.stock ? parseInt(fieldOrBody.stock) : undefined,
+		published: fieldOrBody.published == "true",
+		slug: request.params.slug
+	})
+
+	if (!validated.success) {
+		return response.status(400).json({
+			...validated.error.format()
+		})
+	}
+
+	const data = {}
+
+	if (validated.data.name) data.name = validated.data.name
+	if (validated.data.name) data.slug = generateSlug(validated.data.name)
+	if (validated.data.description) data.description = validated.data.description
+	if (validated.data.sku) data.sku = validated.data.sku
+	if (validated.data.price) data.price = validated.data.price
+	if (validated.data.saleprice >= 0) data.saleprice = validated.data.saleprice
+	if (validated.data.weight) data.weight = validated.data.weight
+	if (validated.data.height) data.height = validated.data.height
+	if (validated.data.width) data.width = validated.data.width
+	if (validated.data.length) data.length = validated.data.length
+	if (validated.data.stock) data.stock = validated.data.stock
+	if (validated.data.published === false || validated.data.published === true) data.published = validated.data.published
+
+	try {
+		const product = await prisma.product.update({
+			where: {
+				slug: validated.data.slug
+			},
+			data,
+		})
+		if (!product) return response.status(404).end()
+		response.json(product)
+	} catch (error) {
+		console.error(error)
+		response.status(500).end()
+	}
+}
+
+export function deleteProduct(request, response, next) {
 	const schema = z.object({
 		slug: z.string().min(1)
 	})

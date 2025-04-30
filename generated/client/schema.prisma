@@ -101,19 +101,19 @@ model Media {
 }
 
 model Post {
-  id        String      @id @default(cuid(2))
+  id        String    @id @default(cuid(2))
   title     String
-  slug      String      @unique
-  blocks    PostBlock[]
+  slug      String    @unique
+  blocks    Block[]
   comments  Comment[]
-  author    User        @relation(fields: [authorId], references: [id])
+  author    User      @relation(fields: [authorId], references: [id])
   authorId  String
   published DateTime?
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
-model PostBlock {
+model Block {
   id        String    @id @default(cuid(2))
   post      Post      @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId    String

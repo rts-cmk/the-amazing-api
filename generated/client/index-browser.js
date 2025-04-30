@@ -194,7 +194,7 @@ exports.Prisma.PostScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.PostBlockScalarFieldEnum = {
+exports.Prisma.BlockScalarFieldEnum = {
   id: 'id',
   postId: 'postId',
   type: 'type',
@@ -278,7 +278,7 @@ exports.Prisma.ModelName = {
   User: 'User',
   Media: 'Media',
   Post: 'Post',
-  PostBlock: 'PostBlock',
+  Block: 'Block',
   Comment: 'Comment',
   RefreshToken: 'RefreshToken'
 };

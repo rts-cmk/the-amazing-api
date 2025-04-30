@@ -49,10 +49,10 @@ export type Media = $Result.DefaultSelection<Prisma.$MediaPayload>
  */
 export type Post = $Result.DefaultSelection<Prisma.$PostPayload>
 /**
- * Model PostBlock
+ * Model Block
  * 
  */
-export type PostBlock = $Result.DefaultSelection<Prisma.$PostBlockPayload>
+export type Block = $Result.DefaultSelection<Prisma.$BlockPayload>
 /**
  * Model Comment
  * 
@@ -309,14 +309,14 @@ export class PrismaClient<
   get post(): Prisma.PostDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.postBlock`: Exposes CRUD operations for the **PostBlock** model.
+   * `prisma.block`: Exposes CRUD operations for the **Block** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more PostBlocks
-    * const postBlocks = await prisma.postBlock.findMany()
+    * // Fetch zero or more Blocks
+    * const blocks = await prisma.block.findMany()
     * ```
     */
-  get postBlock(): Prisma.PostBlockDelegate<ExtArgs, ClientOptions>;
+  get block(): Prisma.BlockDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.comment`: Exposes CRUD operations for the **Comment** model.
@@ -784,7 +784,7 @@ export namespace Prisma {
     User: 'User',
     Media: 'Media',
     Post: 'Post',
-    PostBlock: 'PostBlock',
+    Block: 'Block',
     Comment: 'Comment',
     RefreshToken: 'RefreshToken'
   };
@@ -805,7 +805,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "product" | "order" | "orderItem" | "review" | "user" | "media" | "post" | "postBlock" | "comment" | "refreshToken"
+      modelProps: "product" | "order" | "orderItem" | "review" | "user" | "media" | "post" | "block" | "comment" | "refreshToken"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1327,77 +1327,77 @@ export namespace Prisma {
           }
         }
       }
-      PostBlock: {
-        payload: Prisma.$PostBlockPayload<ExtArgs>
-        fields: Prisma.PostBlockFieldRefs
+      Block: {
+        payload: Prisma.$BlockPayload<ExtArgs>
+        fields: Prisma.BlockFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.PostBlockFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostBlockPayload> | null
+            args: Prisma.BlockFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.PostBlockFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostBlockPayload>
+            args: Prisma.BlockFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockPayload>
           }
           findFirst: {
-            args: Prisma.PostBlockFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostBlockPayload> | null
+            args: Prisma.BlockFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.PostBlockFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostBlockPayload>
+            args: Prisma.BlockFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockPayload>
           }
           findMany: {
-            args: Prisma.PostBlockFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostBlockPayload>[]
+            args: Prisma.BlockFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockPayload>[]
           }
           create: {
-            args: Prisma.PostBlockCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostBlockPayload>
+            args: Prisma.BlockCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockPayload>
           }
           createMany: {
-            args: Prisma.PostBlockCreateManyArgs<ExtArgs>
+            args: Prisma.BlockCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.PostBlockCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostBlockPayload>[]
+            args: Prisma.BlockCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockPayload>[]
           }
           delete: {
-            args: Prisma.PostBlockDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostBlockPayload>
+            args: Prisma.BlockDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockPayload>
           }
           update: {
-            args: Prisma.PostBlockUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostBlockPayload>
+            args: Prisma.BlockUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockPayload>
           }
           deleteMany: {
-            args: Prisma.PostBlockDeleteManyArgs<ExtArgs>
+            args: Prisma.BlockDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.PostBlockUpdateManyArgs<ExtArgs>
+            args: Prisma.BlockUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.PostBlockUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostBlockPayload>[]
+            args: Prisma.BlockUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockPayload>[]
           }
           upsert: {
-            args: Prisma.PostBlockUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostBlockPayload>
+            args: Prisma.BlockUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockPayload>
           }
           aggregate: {
-            args: Prisma.PostBlockAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregatePostBlock>
+            args: Prisma.BlockAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBlock>
           }
           groupBy: {
-            args: Prisma.PostBlockGroupByArgs<ExtArgs>
-            result: $Utils.Optional<PostBlockGroupByOutputType>[]
+            args: Prisma.BlockGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BlockGroupByOutputType>[]
           }
           count: {
-            args: Prisma.PostBlockCountArgs<ExtArgs>
-            result: $Utils.Optional<PostBlockCountAggregateOutputType> | number
+            args: Prisma.BlockCountArgs<ExtArgs>
+            result: $Utils.Optional<BlockCountAggregateOutputType> | number
           }
         }
       }
@@ -1640,7 +1640,7 @@ export namespace Prisma {
     user?: UserOmit
     media?: MediaOmit
     post?: PostOmit
-    postBlock?: PostBlockOmit
+    block?: BlockOmit
     comment?: CommentOmit
     refreshToken?: RefreshTokenOmit
   }
@@ -1930,7 +1930,7 @@ export namespace Prisma {
    * PostCountOutputType without action
    */
   export type PostCountOutputTypeCountBlocksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PostBlockWhereInput
+    where?: BlockWhereInput
   }
 
   /**
@@ -9257,7 +9257,7 @@ export namespace Prisma {
   export type $PostPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Post"
     objects: {
-      blocks: Prisma.$PostBlockPayload<ExtArgs>[]
+      blocks: Prisma.$BlockPayload<ExtArgs>[]
       comments: Prisma.$CommentPayload<ExtArgs>[]
       author: Prisma.$UserPayload<ExtArgs>
     }
@@ -9663,7 +9663,7 @@ export namespace Prisma {
    */
   export interface Prisma__PostClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    blocks<T extends Post$blocksArgs<ExtArgs> = {}>(args?: Subset<T, Post$blocksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostBlockPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    blocks<T extends Post$blocksArgs<ExtArgs> = {}>(args?: Subset<T, Post$blocksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     comments<T extends Post$commentsArgs<ExtArgs> = {}>(args?: Subset<T, Post$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -10100,23 +10100,23 @@ export namespace Prisma {
    */
   export type Post$blocksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PostBlock
+     * Select specific fields to fetch from the Block
      */
-    select?: PostBlockSelect<ExtArgs> | null
+    select?: BlockSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PostBlock
+     * Omit specific fields from the Block
      */
-    omit?: PostBlockOmit<ExtArgs> | null
+    omit?: BlockOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PostBlockInclude<ExtArgs> | null
-    where?: PostBlockWhereInput
-    orderBy?: PostBlockOrderByWithRelationInput | PostBlockOrderByWithRelationInput[]
-    cursor?: PostBlockWhereUniqueInput
+    include?: BlockInclude<ExtArgs> | null
+    where?: BlockWhereInput
+    orderBy?: BlockOrderByWithRelationInput | BlockOrderByWithRelationInput[]
+    cursor?: BlockWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: PostBlockScalarFieldEnum | PostBlockScalarFieldEnum[]
+    distinct?: BlockScalarFieldEnum | BlockScalarFieldEnum[]
   }
 
   /**
@@ -10163,26 +10163,26 @@ export namespace Prisma {
 
 
   /**
-   * Model PostBlock
+   * Model Block
    */
 
-  export type AggregatePostBlock = {
-    _count: PostBlockCountAggregateOutputType | null
-    _avg: PostBlockAvgAggregateOutputType | null
-    _sum: PostBlockSumAggregateOutputType | null
-    _min: PostBlockMinAggregateOutputType | null
-    _max: PostBlockMaxAggregateOutputType | null
+  export type AggregateBlock = {
+    _count: BlockCountAggregateOutputType | null
+    _avg: BlockAvgAggregateOutputType | null
+    _sum: BlockSumAggregateOutputType | null
+    _min: BlockMinAggregateOutputType | null
+    _max: BlockMaxAggregateOutputType | null
   }
 
-  export type PostBlockAvgAggregateOutputType = {
+  export type BlockAvgAggregateOutputType = {
     position: number | null
   }
 
-  export type PostBlockSumAggregateOutputType = {
+  export type BlockSumAggregateOutputType = {
     position: number | null
   }
 
-  export type PostBlockMinAggregateOutputType = {
+  export type BlockMinAggregateOutputType = {
     id: string | null
     postId: string | null
     type: $Enums.BlockType | null
@@ -10191,7 +10191,7 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type PostBlockMaxAggregateOutputType = {
+  export type BlockMaxAggregateOutputType = {
     id: string | null
     postId: string | null
     type: $Enums.BlockType | null
@@ -10200,7 +10200,7 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type PostBlockCountAggregateOutputType = {
+  export type BlockCountAggregateOutputType = {
     id: number
     postId: number
     type: number
@@ -10212,15 +10212,15 @@ export namespace Prisma {
   }
 
 
-  export type PostBlockAvgAggregateInputType = {
+  export type BlockAvgAggregateInputType = {
     position?: true
   }
 
-  export type PostBlockSumAggregateInputType = {
+  export type BlockSumAggregateInputType = {
     position?: true
   }
 
-  export type PostBlockMinAggregateInputType = {
+  export type BlockMinAggregateInputType = {
     id?: true
     postId?: true
     type?: true
@@ -10229,7 +10229,7 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type PostBlockMaxAggregateInputType = {
+  export type BlockMaxAggregateInputType = {
     id?: true
     postId?: true
     type?: true
@@ -10238,7 +10238,7 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type PostBlockCountAggregateInputType = {
+  export type BlockCountAggregateInputType = {
     id?: true
     postId?: true
     type?: true
@@ -10249,93 +10249,93 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type PostBlockAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BlockAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which PostBlock to aggregate.
+     * Filter which Block to aggregate.
      */
-    where?: PostBlockWhereInput
+    where?: BlockWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of PostBlocks to fetch.
+     * Determine the order of Blocks to fetch.
      */
-    orderBy?: PostBlockOrderByWithRelationInput | PostBlockOrderByWithRelationInput[]
+    orderBy?: BlockOrderByWithRelationInput | BlockOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: PostBlockWhereUniqueInput
+    cursor?: BlockWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` PostBlocks from the position of the cursor.
+     * Take `±n` Blocks from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` PostBlocks.
+     * Skip the first `n` Blocks.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned PostBlocks
+     * Count returned Blocks
     **/
-    _count?: true | PostBlockCountAggregateInputType
+    _count?: true | BlockCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: PostBlockAvgAggregateInputType
+    _avg?: BlockAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: PostBlockSumAggregateInputType
+    _sum?: BlockSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: PostBlockMinAggregateInputType
+    _min?: BlockMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: PostBlockMaxAggregateInputType
+    _max?: BlockMaxAggregateInputType
   }
 
-  export type GetPostBlockAggregateType<T extends PostBlockAggregateArgs> = {
-        [P in keyof T & keyof AggregatePostBlock]: P extends '_count' | 'count'
+  export type GetBlockAggregateType<T extends BlockAggregateArgs> = {
+        [P in keyof T & keyof AggregateBlock]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregatePostBlock[P]>
-      : GetScalarType<T[P], AggregatePostBlock[P]>
+        : GetScalarType<T[P], AggregateBlock[P]>
+      : GetScalarType<T[P], AggregateBlock[P]>
   }
 
 
 
 
-  export type PostBlockGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PostBlockWhereInput
-    orderBy?: PostBlockOrderByWithAggregationInput | PostBlockOrderByWithAggregationInput[]
-    by: PostBlockScalarFieldEnum[] | PostBlockScalarFieldEnum
-    having?: PostBlockScalarWhereWithAggregatesInput
+  export type BlockGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BlockWhereInput
+    orderBy?: BlockOrderByWithAggregationInput | BlockOrderByWithAggregationInput[]
+    by: BlockScalarFieldEnum[] | BlockScalarFieldEnum
+    having?: BlockScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: PostBlockCountAggregateInputType | true
-    _avg?: PostBlockAvgAggregateInputType
-    _sum?: PostBlockSumAggregateInputType
-    _min?: PostBlockMinAggregateInputType
-    _max?: PostBlockMaxAggregateInputType
+    _count?: BlockCountAggregateInputType | true
+    _avg?: BlockAvgAggregateInputType
+    _sum?: BlockSumAggregateInputType
+    _min?: BlockMinAggregateInputType
+    _max?: BlockMaxAggregateInputType
   }
 
-  export type PostBlockGroupByOutputType = {
+  export type BlockGroupByOutputType = {
     id: string
     postId: string
     type: $Enums.BlockType
@@ -10343,28 +10343,28 @@ export namespace Prisma {
     position: number
     createdAt: Date
     updatedAt: Date
-    _count: PostBlockCountAggregateOutputType | null
-    _avg: PostBlockAvgAggregateOutputType | null
-    _sum: PostBlockSumAggregateOutputType | null
-    _min: PostBlockMinAggregateOutputType | null
-    _max: PostBlockMaxAggregateOutputType | null
+    _count: BlockCountAggregateOutputType | null
+    _avg: BlockAvgAggregateOutputType | null
+    _sum: BlockSumAggregateOutputType | null
+    _min: BlockMinAggregateOutputType | null
+    _max: BlockMaxAggregateOutputType | null
   }
 
-  type GetPostBlockGroupByPayload<T extends PostBlockGroupByArgs> = Prisma.PrismaPromise<
+  type GetBlockGroupByPayload<T extends BlockGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<PostBlockGroupByOutputType, T['by']> &
+      PickEnumerable<BlockGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof PostBlockGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof BlockGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], PostBlockGroupByOutputType[P]>
-            : GetScalarType<T[P], PostBlockGroupByOutputType[P]>
+              : GetScalarType<T[P], BlockGroupByOutputType[P]>
+            : GetScalarType<T[P], BlockGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type PostBlockSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type BlockSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     postId?: boolean
     type?: boolean
@@ -10373,9 +10373,9 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     post?: boolean | PostDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["postBlock"]>
+  }, ExtArgs["result"]["block"]>
 
-  export type PostBlockSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type BlockSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     postId?: boolean
     type?: boolean
@@ -10384,9 +10384,9 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     post?: boolean | PostDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["postBlock"]>
+  }, ExtArgs["result"]["block"]>
 
-  export type PostBlockSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type BlockSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     postId?: boolean
     type?: boolean
@@ -10395,9 +10395,9 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     post?: boolean | PostDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["postBlock"]>
+  }, ExtArgs["result"]["block"]>
 
-  export type PostBlockSelectScalar = {
+  export type BlockSelectScalar = {
     id?: boolean
     postId?: boolean
     type?: boolean
@@ -10407,19 +10407,19 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type PostBlockOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "postId" | "type" | "content" | "position" | "createdAt" | "updatedAt", ExtArgs["result"]["postBlock"]>
-  export type PostBlockInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BlockOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "postId" | "type" | "content" | "position" | "createdAt" | "updatedAt", ExtArgs["result"]["block"]>
+  export type BlockInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     post?: boolean | PostDefaultArgs<ExtArgs>
   }
-  export type PostBlockIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BlockIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     post?: boolean | PostDefaultArgs<ExtArgs>
   }
-  export type PostBlockIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BlockIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     post?: boolean | PostDefaultArgs<ExtArgs>
   }
 
-  export type $PostBlockPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "PostBlock"
+  export type $BlockPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Block"
     objects: {
       post: Prisma.$PostPayload<ExtArgs>
     }
@@ -10431,136 +10431,136 @@ export namespace Prisma {
       position: number
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["postBlock"]>
+    }, ExtArgs["result"]["block"]>
     composites: {}
   }
 
-  type PostBlockGetPayload<S extends boolean | null | undefined | PostBlockDefaultArgs> = $Result.GetResult<Prisma.$PostBlockPayload, S>
+  type BlockGetPayload<S extends boolean | null | undefined | BlockDefaultArgs> = $Result.GetResult<Prisma.$BlockPayload, S>
 
-  type PostBlockCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<PostBlockFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: PostBlockCountAggregateInputType | true
+  type BlockCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BlockFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BlockCountAggregateInputType | true
     }
 
-  export interface PostBlockDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PostBlock'], meta: { name: 'PostBlock' } }
+  export interface BlockDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Block'], meta: { name: 'Block' } }
     /**
-     * Find zero or one PostBlock that matches the filter.
-     * @param {PostBlockFindUniqueArgs} args - Arguments to find a PostBlock
+     * Find zero or one Block that matches the filter.
+     * @param {BlockFindUniqueArgs} args - Arguments to find a Block
      * @example
-     * // Get one PostBlock
-     * const postBlock = await prisma.postBlock.findUnique({
+     * // Get one Block
+     * const block = await prisma.block.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends PostBlockFindUniqueArgs>(args: SelectSubset<T, PostBlockFindUniqueArgs<ExtArgs>>): Prisma__PostBlockClient<$Result.GetResult<Prisma.$PostBlockPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends BlockFindUniqueArgs>(args: SelectSubset<T, BlockFindUniqueArgs<ExtArgs>>): Prisma__BlockClient<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one PostBlock that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Block that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {PostBlockFindUniqueOrThrowArgs} args - Arguments to find a PostBlock
+     * @param {BlockFindUniqueOrThrowArgs} args - Arguments to find a Block
      * @example
-     * // Get one PostBlock
-     * const postBlock = await prisma.postBlock.findUniqueOrThrow({
+     * // Get one Block
+     * const block = await prisma.block.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends PostBlockFindUniqueOrThrowArgs>(args: SelectSubset<T, PostBlockFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PostBlockClient<$Result.GetResult<Prisma.$PostBlockPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends BlockFindUniqueOrThrowArgs>(args: SelectSubset<T, BlockFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BlockClient<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first PostBlock that matches the filter.
+     * Find the first Block that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostBlockFindFirstArgs} args - Arguments to find a PostBlock
+     * @param {BlockFindFirstArgs} args - Arguments to find a Block
      * @example
-     * // Get one PostBlock
-     * const postBlock = await prisma.postBlock.findFirst({
+     * // Get one Block
+     * const block = await prisma.block.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends PostBlockFindFirstArgs>(args?: SelectSubset<T, PostBlockFindFirstArgs<ExtArgs>>): Prisma__PostBlockClient<$Result.GetResult<Prisma.$PostBlockPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends BlockFindFirstArgs>(args?: SelectSubset<T, BlockFindFirstArgs<ExtArgs>>): Prisma__BlockClient<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first PostBlock that matches the filter or
+     * Find the first Block that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostBlockFindFirstOrThrowArgs} args - Arguments to find a PostBlock
+     * @param {BlockFindFirstOrThrowArgs} args - Arguments to find a Block
      * @example
-     * // Get one PostBlock
-     * const postBlock = await prisma.postBlock.findFirstOrThrow({
+     * // Get one Block
+     * const block = await prisma.block.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends PostBlockFindFirstOrThrowArgs>(args?: SelectSubset<T, PostBlockFindFirstOrThrowArgs<ExtArgs>>): Prisma__PostBlockClient<$Result.GetResult<Prisma.$PostBlockPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends BlockFindFirstOrThrowArgs>(args?: SelectSubset<T, BlockFindFirstOrThrowArgs<ExtArgs>>): Prisma__BlockClient<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more PostBlocks that matches the filter.
+     * Find zero or more Blocks that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostBlockFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {BlockFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all PostBlocks
-     * const postBlocks = await prisma.postBlock.findMany()
+     * // Get all Blocks
+     * const blocks = await prisma.block.findMany()
      * 
-     * // Get first 10 PostBlocks
-     * const postBlocks = await prisma.postBlock.findMany({ take: 10 })
+     * // Get first 10 Blocks
+     * const blocks = await prisma.block.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const postBlockWithIdOnly = await prisma.postBlock.findMany({ select: { id: true } })
+     * const blockWithIdOnly = await prisma.block.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends PostBlockFindManyArgs>(args?: SelectSubset<T, PostBlockFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostBlockPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends BlockFindManyArgs>(args?: SelectSubset<T, BlockFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a PostBlock.
-     * @param {PostBlockCreateArgs} args - Arguments to create a PostBlock.
+     * Create a Block.
+     * @param {BlockCreateArgs} args - Arguments to create a Block.
      * @example
-     * // Create one PostBlock
-     * const PostBlock = await prisma.postBlock.create({
+     * // Create one Block
+     * const Block = await prisma.block.create({
      *   data: {
-     *     // ... data to create a PostBlock
+     *     // ... data to create a Block
      *   }
      * })
      * 
      */
-    create<T extends PostBlockCreateArgs>(args: SelectSubset<T, PostBlockCreateArgs<ExtArgs>>): Prisma__PostBlockClient<$Result.GetResult<Prisma.$PostBlockPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends BlockCreateArgs>(args: SelectSubset<T, BlockCreateArgs<ExtArgs>>): Prisma__BlockClient<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many PostBlocks.
-     * @param {PostBlockCreateManyArgs} args - Arguments to create many PostBlocks.
+     * Create many Blocks.
+     * @param {BlockCreateManyArgs} args - Arguments to create many Blocks.
      * @example
-     * // Create many PostBlocks
-     * const postBlock = await prisma.postBlock.createMany({
+     * // Create many Blocks
+     * const block = await prisma.block.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends PostBlockCreateManyArgs>(args?: SelectSubset<T, PostBlockCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends BlockCreateManyArgs>(args?: SelectSubset<T, BlockCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many PostBlocks and returns the data saved in the database.
-     * @param {PostBlockCreateManyAndReturnArgs} args - Arguments to create many PostBlocks.
+     * Create many Blocks and returns the data saved in the database.
+     * @param {BlockCreateManyAndReturnArgs} args - Arguments to create many Blocks.
      * @example
-     * // Create many PostBlocks
-     * const postBlock = await prisma.postBlock.createManyAndReturn({
+     * // Create many Blocks
+     * const block = await prisma.block.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many PostBlocks and only return the `id`
-     * const postBlockWithIdOnly = await prisma.postBlock.createManyAndReturn({
+     * // Create many Blocks and only return the `id`
+     * const blockWithIdOnly = await prisma.block.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -10570,28 +10570,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends PostBlockCreateManyAndReturnArgs>(args?: SelectSubset<T, PostBlockCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostBlockPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends BlockCreateManyAndReturnArgs>(args?: SelectSubset<T, BlockCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a PostBlock.
-     * @param {PostBlockDeleteArgs} args - Arguments to delete one PostBlock.
+     * Delete a Block.
+     * @param {BlockDeleteArgs} args - Arguments to delete one Block.
      * @example
-     * // Delete one PostBlock
-     * const PostBlock = await prisma.postBlock.delete({
+     * // Delete one Block
+     * const Block = await prisma.block.delete({
      *   where: {
-     *     // ... filter to delete one PostBlock
+     *     // ... filter to delete one Block
      *   }
      * })
      * 
      */
-    delete<T extends PostBlockDeleteArgs>(args: SelectSubset<T, PostBlockDeleteArgs<ExtArgs>>): Prisma__PostBlockClient<$Result.GetResult<Prisma.$PostBlockPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends BlockDeleteArgs>(args: SelectSubset<T, BlockDeleteArgs<ExtArgs>>): Prisma__BlockClient<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one PostBlock.
-     * @param {PostBlockUpdateArgs} args - Arguments to update one PostBlock.
+     * Update one Block.
+     * @param {BlockUpdateArgs} args - Arguments to update one Block.
      * @example
-     * // Update one PostBlock
-     * const postBlock = await prisma.postBlock.update({
+     * // Update one Block
+     * const block = await prisma.block.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -10601,30 +10601,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends PostBlockUpdateArgs>(args: SelectSubset<T, PostBlockUpdateArgs<ExtArgs>>): Prisma__PostBlockClient<$Result.GetResult<Prisma.$PostBlockPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends BlockUpdateArgs>(args: SelectSubset<T, BlockUpdateArgs<ExtArgs>>): Prisma__BlockClient<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more PostBlocks.
-     * @param {PostBlockDeleteManyArgs} args - Arguments to filter PostBlocks to delete.
+     * Delete zero or more Blocks.
+     * @param {BlockDeleteManyArgs} args - Arguments to filter Blocks to delete.
      * @example
-     * // Delete a few PostBlocks
-     * const { count } = await prisma.postBlock.deleteMany({
+     * // Delete a few Blocks
+     * const { count } = await prisma.block.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends PostBlockDeleteManyArgs>(args?: SelectSubset<T, PostBlockDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends BlockDeleteManyArgs>(args?: SelectSubset<T, BlockDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more PostBlocks.
+     * Update zero or more Blocks.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostBlockUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {BlockUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many PostBlocks
-     * const postBlock = await prisma.postBlock.updateMany({
+     * // Update many Blocks
+     * const block = await prisma.block.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -10634,14 +10634,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends PostBlockUpdateManyArgs>(args: SelectSubset<T, PostBlockUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends BlockUpdateManyArgs>(args: SelectSubset<T, BlockUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more PostBlocks and returns the data updated in the database.
-     * @param {PostBlockUpdateManyAndReturnArgs} args - Arguments to update many PostBlocks.
+     * Update zero or more Blocks and returns the data updated in the database.
+     * @param {BlockUpdateManyAndReturnArgs} args - Arguments to update many Blocks.
      * @example
-     * // Update many PostBlocks
-     * const postBlock = await prisma.postBlock.updateManyAndReturn({
+     * // Update many Blocks
+     * const block = await prisma.block.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -10650,8 +10650,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more PostBlocks and only return the `id`
-     * const postBlockWithIdOnly = await prisma.postBlock.updateManyAndReturn({
+     * // Update zero or more Blocks and only return the `id`
+     * const blockWithIdOnly = await prisma.block.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -10664,56 +10664,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends PostBlockUpdateManyAndReturnArgs>(args: SelectSubset<T, PostBlockUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostBlockPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends BlockUpdateManyAndReturnArgs>(args: SelectSubset<T, BlockUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one PostBlock.
-     * @param {PostBlockUpsertArgs} args - Arguments to update or create a PostBlock.
+     * Create or update one Block.
+     * @param {BlockUpsertArgs} args - Arguments to update or create a Block.
      * @example
-     * // Update or create a PostBlock
-     * const postBlock = await prisma.postBlock.upsert({
+     * // Update or create a Block
+     * const block = await prisma.block.upsert({
      *   create: {
-     *     // ... data to create a PostBlock
+     *     // ... data to create a Block
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the PostBlock we want to update
+     *     // ... the filter for the Block we want to update
      *   }
      * })
      */
-    upsert<T extends PostBlockUpsertArgs>(args: SelectSubset<T, PostBlockUpsertArgs<ExtArgs>>): Prisma__PostBlockClient<$Result.GetResult<Prisma.$PostBlockPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends BlockUpsertArgs>(args: SelectSubset<T, BlockUpsertArgs<ExtArgs>>): Prisma__BlockClient<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of PostBlocks.
+     * Count the number of Blocks.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostBlockCountArgs} args - Arguments to filter PostBlocks to count.
+     * @param {BlockCountArgs} args - Arguments to filter Blocks to count.
      * @example
-     * // Count the number of PostBlocks
-     * const count = await prisma.postBlock.count({
+     * // Count the number of Blocks
+     * const count = await prisma.block.count({
      *   where: {
-     *     // ... the filter for the PostBlocks we want to count
+     *     // ... the filter for the Blocks we want to count
      *   }
      * })
     **/
-    count<T extends PostBlockCountArgs>(
-      args?: Subset<T, PostBlockCountArgs>,
+    count<T extends BlockCountArgs>(
+      args?: Subset<T, BlockCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], PostBlockCountAggregateOutputType>
+          : GetScalarType<T['select'], BlockCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a PostBlock.
+     * Allows you to perform aggregations operations on a Block.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostBlockAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {BlockAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -10733,13 +10733,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends PostBlockAggregateArgs>(args: Subset<T, PostBlockAggregateArgs>): Prisma.PrismaPromise<GetPostBlockAggregateType<T>>
+    aggregate<T extends BlockAggregateArgs>(args: Subset<T, BlockAggregateArgs>): Prisma.PrismaPromise<GetBlockAggregateType<T>>
 
     /**
-     * Group by PostBlock.
+     * Group by Block.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostBlockGroupByArgs} args - Group by arguments.
+     * @param {BlockGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -10754,14 +10754,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends PostBlockGroupByArgs,
+      T extends BlockGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: PostBlockGroupByArgs['orderBy'] }
-        : { orderBy?: PostBlockGroupByArgs['orderBy'] },
+        ? { orderBy: BlockGroupByArgs['orderBy'] }
+        : { orderBy?: BlockGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -10810,20 +10810,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, PostBlockGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPostBlockGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, BlockGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBlockGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the PostBlock model
+   * Fields of the Block model
    */
-  readonly fields: PostBlockFieldRefs;
+  readonly fields: BlockFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for PostBlock.
+   * The delegate class that acts as a "Promise-like" for Block.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__PostBlockClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__BlockClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     post<T extends PostDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PostDefaultArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -10852,425 +10852,425 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the PostBlock model
+   * Fields of the Block model
    */
-  interface PostBlockFieldRefs {
-    readonly id: FieldRef<"PostBlock", 'String'>
-    readonly postId: FieldRef<"PostBlock", 'String'>
-    readonly type: FieldRef<"PostBlock", 'BlockType'>
-    readonly content: FieldRef<"PostBlock", 'Json'>
-    readonly position: FieldRef<"PostBlock", 'Int'>
-    readonly createdAt: FieldRef<"PostBlock", 'DateTime'>
-    readonly updatedAt: FieldRef<"PostBlock", 'DateTime'>
+  interface BlockFieldRefs {
+    readonly id: FieldRef<"Block", 'String'>
+    readonly postId: FieldRef<"Block", 'String'>
+    readonly type: FieldRef<"Block", 'BlockType'>
+    readonly content: FieldRef<"Block", 'Json'>
+    readonly position: FieldRef<"Block", 'Int'>
+    readonly createdAt: FieldRef<"Block", 'DateTime'>
+    readonly updatedAt: FieldRef<"Block", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * PostBlock findUnique
+   * Block findUnique
    */
-  export type PostBlockFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BlockFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PostBlock
+     * Select specific fields to fetch from the Block
      */
-    select?: PostBlockSelect<ExtArgs> | null
+    select?: BlockSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PostBlock
+     * Omit specific fields from the Block
      */
-    omit?: PostBlockOmit<ExtArgs> | null
+    omit?: BlockOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PostBlockInclude<ExtArgs> | null
+    include?: BlockInclude<ExtArgs> | null
     /**
-     * Filter, which PostBlock to fetch.
+     * Filter, which Block to fetch.
      */
-    where: PostBlockWhereUniqueInput
+    where: BlockWhereUniqueInput
   }
 
   /**
-   * PostBlock findUniqueOrThrow
+   * Block findUniqueOrThrow
    */
-  export type PostBlockFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BlockFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PostBlock
+     * Select specific fields to fetch from the Block
      */
-    select?: PostBlockSelect<ExtArgs> | null
+    select?: BlockSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PostBlock
+     * Omit specific fields from the Block
      */
-    omit?: PostBlockOmit<ExtArgs> | null
+    omit?: BlockOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PostBlockInclude<ExtArgs> | null
+    include?: BlockInclude<ExtArgs> | null
     /**
-     * Filter, which PostBlock to fetch.
+     * Filter, which Block to fetch.
      */
-    where: PostBlockWhereUniqueInput
+    where: BlockWhereUniqueInput
   }
 
   /**
-   * PostBlock findFirst
+   * Block findFirst
    */
-  export type PostBlockFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BlockFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PostBlock
+     * Select specific fields to fetch from the Block
      */
-    select?: PostBlockSelect<ExtArgs> | null
+    select?: BlockSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PostBlock
+     * Omit specific fields from the Block
      */
-    omit?: PostBlockOmit<ExtArgs> | null
+    omit?: BlockOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PostBlockInclude<ExtArgs> | null
+    include?: BlockInclude<ExtArgs> | null
     /**
-     * Filter, which PostBlock to fetch.
+     * Filter, which Block to fetch.
      */
-    where?: PostBlockWhereInput
+    where?: BlockWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of PostBlocks to fetch.
+     * Determine the order of Blocks to fetch.
      */
-    orderBy?: PostBlockOrderByWithRelationInput | PostBlockOrderByWithRelationInput[]
+    orderBy?: BlockOrderByWithRelationInput | BlockOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for PostBlocks.
+     * Sets the position for searching for Blocks.
      */
-    cursor?: PostBlockWhereUniqueInput
+    cursor?: BlockWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` PostBlocks from the position of the cursor.
+     * Take `±n` Blocks from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` PostBlocks.
+     * Skip the first `n` Blocks.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of PostBlocks.
+     * Filter by unique combinations of Blocks.
      */
-    distinct?: PostBlockScalarFieldEnum | PostBlockScalarFieldEnum[]
+    distinct?: BlockScalarFieldEnum | BlockScalarFieldEnum[]
   }
 
   /**
-   * PostBlock findFirstOrThrow
+   * Block findFirstOrThrow
    */
-  export type PostBlockFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BlockFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PostBlock
+     * Select specific fields to fetch from the Block
      */
-    select?: PostBlockSelect<ExtArgs> | null
+    select?: BlockSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PostBlock
+     * Omit specific fields from the Block
      */
-    omit?: PostBlockOmit<ExtArgs> | null
+    omit?: BlockOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PostBlockInclude<ExtArgs> | null
+    include?: BlockInclude<ExtArgs> | null
     /**
-     * Filter, which PostBlock to fetch.
+     * Filter, which Block to fetch.
      */
-    where?: PostBlockWhereInput
+    where?: BlockWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of PostBlocks to fetch.
+     * Determine the order of Blocks to fetch.
      */
-    orderBy?: PostBlockOrderByWithRelationInput | PostBlockOrderByWithRelationInput[]
+    orderBy?: BlockOrderByWithRelationInput | BlockOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for PostBlocks.
+     * Sets the position for searching for Blocks.
      */
-    cursor?: PostBlockWhereUniqueInput
+    cursor?: BlockWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` PostBlocks from the position of the cursor.
+     * Take `±n` Blocks from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` PostBlocks.
+     * Skip the first `n` Blocks.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of PostBlocks.
+     * Filter by unique combinations of Blocks.
      */
-    distinct?: PostBlockScalarFieldEnum | PostBlockScalarFieldEnum[]
+    distinct?: BlockScalarFieldEnum | BlockScalarFieldEnum[]
   }
 
   /**
-   * PostBlock findMany
+   * Block findMany
    */
-  export type PostBlockFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BlockFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PostBlock
+     * Select specific fields to fetch from the Block
      */
-    select?: PostBlockSelect<ExtArgs> | null
+    select?: BlockSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PostBlock
+     * Omit specific fields from the Block
      */
-    omit?: PostBlockOmit<ExtArgs> | null
+    omit?: BlockOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PostBlockInclude<ExtArgs> | null
+    include?: BlockInclude<ExtArgs> | null
     /**
-     * Filter, which PostBlocks to fetch.
+     * Filter, which Blocks to fetch.
      */
-    where?: PostBlockWhereInput
+    where?: BlockWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of PostBlocks to fetch.
+     * Determine the order of Blocks to fetch.
      */
-    orderBy?: PostBlockOrderByWithRelationInput | PostBlockOrderByWithRelationInput[]
+    orderBy?: BlockOrderByWithRelationInput | BlockOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing PostBlocks.
+     * Sets the position for listing Blocks.
      */
-    cursor?: PostBlockWhereUniqueInput
+    cursor?: BlockWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` PostBlocks from the position of the cursor.
+     * Take `±n` Blocks from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` PostBlocks.
+     * Skip the first `n` Blocks.
      */
     skip?: number
-    distinct?: PostBlockScalarFieldEnum | PostBlockScalarFieldEnum[]
+    distinct?: BlockScalarFieldEnum | BlockScalarFieldEnum[]
   }
 
   /**
-   * PostBlock create
+   * Block create
    */
-  export type PostBlockCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BlockCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PostBlock
+     * Select specific fields to fetch from the Block
      */
-    select?: PostBlockSelect<ExtArgs> | null
+    select?: BlockSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PostBlock
+     * Omit specific fields from the Block
      */
-    omit?: PostBlockOmit<ExtArgs> | null
+    omit?: BlockOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PostBlockInclude<ExtArgs> | null
+    include?: BlockInclude<ExtArgs> | null
     /**
-     * The data needed to create a PostBlock.
+     * The data needed to create a Block.
      */
-    data: XOR<PostBlockCreateInput, PostBlockUncheckedCreateInput>
+    data: XOR<BlockCreateInput, BlockUncheckedCreateInput>
   }
 
   /**
-   * PostBlock createMany
+   * Block createMany
    */
-  export type PostBlockCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BlockCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many PostBlocks.
+     * The data used to create many Blocks.
      */
-    data: PostBlockCreateManyInput | PostBlockCreateManyInput[]
+    data: BlockCreateManyInput | BlockCreateManyInput[]
   }
 
   /**
-   * PostBlock createManyAndReturn
+   * Block createManyAndReturn
    */
-  export type PostBlockCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BlockCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PostBlock
+     * Select specific fields to fetch from the Block
      */
-    select?: PostBlockSelectCreateManyAndReturn<ExtArgs> | null
+    select?: BlockSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the PostBlock
+     * Omit specific fields from the Block
      */
-    omit?: PostBlockOmit<ExtArgs> | null
+    omit?: BlockOmit<ExtArgs> | null
     /**
-     * The data used to create many PostBlocks.
+     * The data used to create many Blocks.
      */
-    data: PostBlockCreateManyInput | PostBlockCreateManyInput[]
+    data: BlockCreateManyInput | BlockCreateManyInput[]
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PostBlockIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: BlockIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * PostBlock update
+   * Block update
    */
-  export type PostBlockUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BlockUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PostBlock
+     * Select specific fields to fetch from the Block
      */
-    select?: PostBlockSelect<ExtArgs> | null
+    select?: BlockSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PostBlock
+     * Omit specific fields from the Block
      */
-    omit?: PostBlockOmit<ExtArgs> | null
+    omit?: BlockOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PostBlockInclude<ExtArgs> | null
+    include?: BlockInclude<ExtArgs> | null
     /**
-     * The data needed to update a PostBlock.
+     * The data needed to update a Block.
      */
-    data: XOR<PostBlockUpdateInput, PostBlockUncheckedUpdateInput>
+    data: XOR<BlockUpdateInput, BlockUncheckedUpdateInput>
     /**
-     * Choose, which PostBlock to update.
+     * Choose, which Block to update.
      */
-    where: PostBlockWhereUniqueInput
+    where: BlockWhereUniqueInput
   }
 
   /**
-   * PostBlock updateMany
+   * Block updateMany
    */
-  export type PostBlockUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BlockUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update PostBlocks.
+     * The data used to update Blocks.
      */
-    data: XOR<PostBlockUpdateManyMutationInput, PostBlockUncheckedUpdateManyInput>
+    data: XOR<BlockUpdateManyMutationInput, BlockUncheckedUpdateManyInput>
     /**
-     * Filter which PostBlocks to update
+     * Filter which Blocks to update
      */
-    where?: PostBlockWhereInput
+    where?: BlockWhereInput
     /**
-     * Limit how many PostBlocks to update.
+     * Limit how many Blocks to update.
      */
     limit?: number
   }
 
   /**
-   * PostBlock updateManyAndReturn
+   * Block updateManyAndReturn
    */
-  export type PostBlockUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BlockUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PostBlock
+     * Select specific fields to fetch from the Block
      */
-    select?: PostBlockSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: BlockSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the PostBlock
+     * Omit specific fields from the Block
      */
-    omit?: PostBlockOmit<ExtArgs> | null
+    omit?: BlockOmit<ExtArgs> | null
     /**
-     * The data used to update PostBlocks.
+     * The data used to update Blocks.
      */
-    data: XOR<PostBlockUpdateManyMutationInput, PostBlockUncheckedUpdateManyInput>
+    data: XOR<BlockUpdateManyMutationInput, BlockUncheckedUpdateManyInput>
     /**
-     * Filter which PostBlocks to update
+     * Filter which Blocks to update
      */
-    where?: PostBlockWhereInput
+    where?: BlockWhereInput
     /**
-     * Limit how many PostBlocks to update.
+     * Limit how many Blocks to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PostBlockIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: BlockIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * PostBlock upsert
+   * Block upsert
    */
-  export type PostBlockUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BlockUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PostBlock
+     * Select specific fields to fetch from the Block
      */
-    select?: PostBlockSelect<ExtArgs> | null
+    select?: BlockSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PostBlock
+     * Omit specific fields from the Block
      */
-    omit?: PostBlockOmit<ExtArgs> | null
+    omit?: BlockOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PostBlockInclude<ExtArgs> | null
+    include?: BlockInclude<ExtArgs> | null
     /**
-     * The filter to search for the PostBlock to update in case it exists.
+     * The filter to search for the Block to update in case it exists.
      */
-    where: PostBlockWhereUniqueInput
+    where: BlockWhereUniqueInput
     /**
-     * In case the PostBlock found by the `where` argument doesn't exist, create a new PostBlock with this data.
+     * In case the Block found by the `where` argument doesn't exist, create a new Block with this data.
      */
-    create: XOR<PostBlockCreateInput, PostBlockUncheckedCreateInput>
+    create: XOR<BlockCreateInput, BlockUncheckedCreateInput>
     /**
-     * In case the PostBlock was found with the provided `where` argument, update it with this data.
+     * In case the Block was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<PostBlockUpdateInput, PostBlockUncheckedUpdateInput>
+    update: XOR<BlockUpdateInput, BlockUncheckedUpdateInput>
   }
 
   /**
-   * PostBlock delete
+   * Block delete
    */
-  export type PostBlockDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BlockDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PostBlock
+     * Select specific fields to fetch from the Block
      */
-    select?: PostBlockSelect<ExtArgs> | null
+    select?: BlockSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PostBlock
+     * Omit specific fields from the Block
      */
-    omit?: PostBlockOmit<ExtArgs> | null
+    omit?: BlockOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PostBlockInclude<ExtArgs> | null
+    include?: BlockInclude<ExtArgs> | null
     /**
-     * Filter which PostBlock to delete.
+     * Filter which Block to delete.
      */
-    where: PostBlockWhereUniqueInput
+    where: BlockWhereUniqueInput
   }
 
   /**
-   * PostBlock deleteMany
+   * Block deleteMany
    */
-  export type PostBlockDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BlockDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which PostBlocks to delete
+     * Filter which Blocks to delete
      */
-    where?: PostBlockWhereInput
+    where?: BlockWhereInput
     /**
-     * Limit how many PostBlocks to delete.
+     * Limit how many Blocks to delete.
      */
     limit?: number
   }
 
   /**
-   * PostBlock without action
+   * Block without action
    */
-  export type PostBlockDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type BlockDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PostBlock
+     * Select specific fields to fetch from the Block
      */
-    select?: PostBlockSelect<ExtArgs> | null
+    select?: BlockSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PostBlock
+     * Omit specific fields from the Block
      */
-    omit?: PostBlockOmit<ExtArgs> | null
+    omit?: BlockOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PostBlockInclude<ExtArgs> | null
+    include?: BlockInclude<ExtArgs> | null
   }
 
 
@@ -13602,7 +13602,7 @@ export namespace Prisma {
   export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
 
 
-  export const PostBlockScalarFieldEnum: {
+  export const BlockScalarFieldEnum: {
     id: 'id',
     postId: 'postId',
     type: 'type',
@@ -13612,7 +13612,7 @@ export namespace Prisma {
     updatedAt: 'updatedAt'
   };
 
-  export type PostBlockScalarFieldEnum = (typeof PostBlockScalarFieldEnum)[keyof typeof PostBlockScalarFieldEnum]
+  export type BlockScalarFieldEnum = (typeof BlockScalarFieldEnum)[keyof typeof BlockScalarFieldEnum]
 
 
   export const CommentScalarFieldEnum: {
@@ -14241,7 +14241,7 @@ export namespace Prisma {
     published?: DateTimeNullableFilter<"Post"> | Date | string | null
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
-    blocks?: PostBlockListRelationFilter
+    blocks?: BlockListRelationFilter
     comments?: CommentListRelationFilter
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -14254,7 +14254,7 @@ export namespace Prisma {
     published?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    blocks?: PostBlockOrderByRelationAggregateInput
+    blocks?: BlockOrderByRelationAggregateInput
     comments?: CommentOrderByRelationAggregateInput
     author?: UserOrderByWithRelationInput
   }
@@ -14270,7 +14270,7 @@ export namespace Prisma {
     published?: DateTimeNullableFilter<"Post"> | Date | string | null
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
-    blocks?: PostBlockListRelationFilter
+    blocks?: BlockListRelationFilter
     comments?: CommentListRelationFilter
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "slug">
@@ -14301,21 +14301,21 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
   }
 
-  export type PostBlockWhereInput = {
-    AND?: PostBlockWhereInput | PostBlockWhereInput[]
-    OR?: PostBlockWhereInput[]
-    NOT?: PostBlockWhereInput | PostBlockWhereInput[]
-    id?: StringFilter<"PostBlock"> | string
-    postId?: StringFilter<"PostBlock"> | string
-    type?: EnumBlockTypeFilter<"PostBlock"> | $Enums.BlockType
-    content?: JsonFilter<"PostBlock">
-    position?: IntFilter<"PostBlock"> | number
-    createdAt?: DateTimeFilter<"PostBlock"> | Date | string
-    updatedAt?: DateTimeFilter<"PostBlock"> | Date | string
+  export type BlockWhereInput = {
+    AND?: BlockWhereInput | BlockWhereInput[]
+    OR?: BlockWhereInput[]
+    NOT?: BlockWhereInput | BlockWhereInput[]
+    id?: StringFilter<"Block"> | string
+    postId?: StringFilter<"Block"> | string
+    type?: EnumBlockTypeFilter<"Block"> | $Enums.BlockType
+    content?: JsonFilter<"Block">
+    position?: IntFilter<"Block"> | number
+    createdAt?: DateTimeFilter<"Block"> | Date | string
+    updatedAt?: DateTimeFilter<"Block"> | Date | string
     post?: XOR<PostScalarRelationFilter, PostWhereInput>
   }
 
-  export type PostBlockOrderByWithRelationInput = {
+  export type BlockOrderByWithRelationInput = {
     id?: SortOrder
     postId?: SortOrder
     type?: SortOrder
@@ -14326,21 +14326,21 @@ export namespace Prisma {
     post?: PostOrderByWithRelationInput
   }
 
-  export type PostBlockWhereUniqueInput = Prisma.AtLeast<{
+  export type BlockWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: PostBlockWhereInput | PostBlockWhereInput[]
-    OR?: PostBlockWhereInput[]
-    NOT?: PostBlockWhereInput | PostBlockWhereInput[]
-    postId?: StringFilter<"PostBlock"> | string
-    type?: EnumBlockTypeFilter<"PostBlock"> | $Enums.BlockType
-    content?: JsonFilter<"PostBlock">
-    position?: IntFilter<"PostBlock"> | number
-    createdAt?: DateTimeFilter<"PostBlock"> | Date | string
-    updatedAt?: DateTimeFilter<"PostBlock"> | Date | string
+    AND?: BlockWhereInput | BlockWhereInput[]
+    OR?: BlockWhereInput[]
+    NOT?: BlockWhereInput | BlockWhereInput[]
+    postId?: StringFilter<"Block"> | string
+    type?: EnumBlockTypeFilter<"Block"> | $Enums.BlockType
+    content?: JsonFilter<"Block">
+    position?: IntFilter<"Block"> | number
+    createdAt?: DateTimeFilter<"Block"> | Date | string
+    updatedAt?: DateTimeFilter<"Block"> | Date | string
     post?: XOR<PostScalarRelationFilter, PostWhereInput>
   }, "id">
 
-  export type PostBlockOrderByWithAggregationInput = {
+  export type BlockOrderByWithAggregationInput = {
     id?: SortOrder
     postId?: SortOrder
     type?: SortOrder
@@ -14348,24 +14348,24 @@ export namespace Prisma {
     position?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: PostBlockCountOrderByAggregateInput
-    _avg?: PostBlockAvgOrderByAggregateInput
-    _max?: PostBlockMaxOrderByAggregateInput
-    _min?: PostBlockMinOrderByAggregateInput
-    _sum?: PostBlockSumOrderByAggregateInput
+    _count?: BlockCountOrderByAggregateInput
+    _avg?: BlockAvgOrderByAggregateInput
+    _max?: BlockMaxOrderByAggregateInput
+    _min?: BlockMinOrderByAggregateInput
+    _sum?: BlockSumOrderByAggregateInput
   }
 
-  export type PostBlockScalarWhereWithAggregatesInput = {
-    AND?: PostBlockScalarWhereWithAggregatesInput | PostBlockScalarWhereWithAggregatesInput[]
-    OR?: PostBlockScalarWhereWithAggregatesInput[]
-    NOT?: PostBlockScalarWhereWithAggregatesInput | PostBlockScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"PostBlock"> | string
-    postId?: StringWithAggregatesFilter<"PostBlock"> | string
-    type?: EnumBlockTypeWithAggregatesFilter<"PostBlock"> | $Enums.BlockType
-    content?: JsonWithAggregatesFilter<"PostBlock">
-    position?: IntWithAggregatesFilter<"PostBlock"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"PostBlock"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"PostBlock"> | Date | string
+  export type BlockScalarWhereWithAggregatesInput = {
+    AND?: BlockScalarWhereWithAggregatesInput | BlockScalarWhereWithAggregatesInput[]
+    OR?: BlockScalarWhereWithAggregatesInput[]
+    NOT?: BlockScalarWhereWithAggregatesInput | BlockScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Block"> | string
+    postId?: StringWithAggregatesFilter<"Block"> | string
+    type?: EnumBlockTypeWithAggregatesFilter<"Block"> | $Enums.BlockType
+    content?: JsonWithAggregatesFilter<"Block">
+    position?: IntWithAggregatesFilter<"Block"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Block"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Block"> | Date | string
   }
 
   export type CommentWhereInput = {
@@ -15028,7 +15028,7 @@ export namespace Prisma {
     published?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    blocks?: PostBlockCreateNestedManyWithoutPostInput
+    blocks?: BlockCreateNestedManyWithoutPostInput
     comments?: CommentCreateNestedManyWithoutPostInput
     author: UserCreateNestedOneWithoutPostsInput
   }
@@ -15041,7 +15041,7 @@ export namespace Prisma {
     published?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    blocks?: PostBlockUncheckedCreateNestedManyWithoutPostInput
+    blocks?: BlockUncheckedCreateNestedManyWithoutPostInput
     comments?: CommentUncheckedCreateNestedManyWithoutPostInput
   }
 
@@ -15052,7 +15052,7 @@ export namespace Prisma {
     published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    blocks?: PostBlockUpdateManyWithoutPostNestedInput
+    blocks?: BlockUpdateManyWithoutPostNestedInput
     comments?: CommentUpdateManyWithoutPostNestedInput
     author?: UserUpdateOneRequiredWithoutPostsNestedInput
   }
@@ -15065,7 +15065,7 @@ export namespace Prisma {
     published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    blocks?: PostBlockUncheckedUpdateManyWithoutPostNestedInput
+    blocks?: BlockUncheckedUpdateManyWithoutPostNestedInput
     comments?: CommentUncheckedUpdateManyWithoutPostNestedInput
   }
 
@@ -15098,7 +15098,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PostBlockCreateInput = {
+  export type BlockCreateInput = {
     id?: string
     type: $Enums.BlockType
     content: JsonNullValueInput | InputJsonValue
@@ -15108,7 +15108,7 @@ export namespace Prisma {
     post: PostCreateNestedOneWithoutBlocksInput
   }
 
-  export type PostBlockUncheckedCreateInput = {
+  export type BlockUncheckedCreateInput = {
     id?: string
     postId: string
     type: $Enums.BlockType
@@ -15118,7 +15118,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PostBlockUpdateInput = {
+  export type BlockUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: EnumBlockTypeFieldUpdateOperationsInput | $Enums.BlockType
     content?: JsonNullValueInput | InputJsonValue
@@ -15128,7 +15128,7 @@ export namespace Prisma {
     post?: PostUpdateOneRequiredWithoutBlocksNestedInput
   }
 
-  export type PostBlockUncheckedUpdateInput = {
+  export type BlockUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     postId?: StringFieldUpdateOperationsInput | string
     type?: EnumBlockTypeFieldUpdateOperationsInput | $Enums.BlockType
@@ -15138,7 +15138,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PostBlockCreateManyInput = {
+  export type BlockCreateManyInput = {
     id?: string
     postId: string
     type: $Enums.BlockType
@@ -15148,7 +15148,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PostBlockUpdateManyMutationInput = {
+  export type BlockUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: EnumBlockTypeFieldUpdateOperationsInput | $Enums.BlockType
     content?: JsonNullValueInput | InputJsonValue
@@ -15157,7 +15157,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PostBlockUncheckedUpdateManyInput = {
+  export type BlockUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     postId?: StringFieldUpdateOperationsInput | string
     type?: EnumBlockTypeFieldUpdateOperationsInput | $Enums.BlockType
@@ -15928,13 +15928,13 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type PostBlockListRelationFilter = {
-    every?: PostBlockWhereInput
-    some?: PostBlockWhereInput
-    none?: PostBlockWhereInput
+  export type BlockListRelationFilter = {
+    every?: BlockWhereInput
+    some?: BlockWhereInput
+    none?: BlockWhereInput
   }
 
-  export type PostBlockOrderByRelationAggregateInput = {
+  export type BlockOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -16012,7 +16012,7 @@ export namespace Prisma {
     isNot?: PostWhereInput
   }
 
-  export type PostBlockCountOrderByAggregateInput = {
+  export type BlockCountOrderByAggregateInput = {
     id?: SortOrder
     postId?: SortOrder
     type?: SortOrder
@@ -16022,11 +16022,11 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type PostBlockAvgOrderByAggregateInput = {
+  export type BlockAvgOrderByAggregateInput = {
     position?: SortOrder
   }
 
-  export type PostBlockMaxOrderByAggregateInput = {
+  export type BlockMaxOrderByAggregateInput = {
     id?: SortOrder
     postId?: SortOrder
     type?: SortOrder
@@ -16035,7 +16035,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type PostBlockMinOrderByAggregateInput = {
+  export type BlockMinOrderByAggregateInput = {
     id?: SortOrder
     postId?: SortOrder
     type?: SortOrder
@@ -16044,7 +16044,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type PostBlockSumOrderByAggregateInput = {
+  export type BlockSumOrderByAggregateInput = {
     position?: SortOrder
   }
 
@@ -16623,11 +16623,11 @@ export namespace Prisma {
     deleteMany?: ProductScalarWhereInput | ProductScalarWhereInput[]
   }
 
-  export type PostBlockCreateNestedManyWithoutPostInput = {
-    create?: XOR<PostBlockCreateWithoutPostInput, PostBlockUncheckedCreateWithoutPostInput> | PostBlockCreateWithoutPostInput[] | PostBlockUncheckedCreateWithoutPostInput[]
-    connectOrCreate?: PostBlockCreateOrConnectWithoutPostInput | PostBlockCreateOrConnectWithoutPostInput[]
-    createMany?: PostBlockCreateManyPostInputEnvelope
-    connect?: PostBlockWhereUniqueInput | PostBlockWhereUniqueInput[]
+  export type BlockCreateNestedManyWithoutPostInput = {
+    create?: XOR<BlockCreateWithoutPostInput, BlockUncheckedCreateWithoutPostInput> | BlockCreateWithoutPostInput[] | BlockUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: BlockCreateOrConnectWithoutPostInput | BlockCreateOrConnectWithoutPostInput[]
+    createMany?: BlockCreateManyPostInputEnvelope
+    connect?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
   }
 
   export type CommentCreateNestedManyWithoutPostInput = {
@@ -16643,11 +16643,11 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type PostBlockUncheckedCreateNestedManyWithoutPostInput = {
-    create?: XOR<PostBlockCreateWithoutPostInput, PostBlockUncheckedCreateWithoutPostInput> | PostBlockCreateWithoutPostInput[] | PostBlockUncheckedCreateWithoutPostInput[]
-    connectOrCreate?: PostBlockCreateOrConnectWithoutPostInput | PostBlockCreateOrConnectWithoutPostInput[]
-    createMany?: PostBlockCreateManyPostInputEnvelope
-    connect?: PostBlockWhereUniqueInput | PostBlockWhereUniqueInput[]
+  export type BlockUncheckedCreateNestedManyWithoutPostInput = {
+    create?: XOR<BlockCreateWithoutPostInput, BlockUncheckedCreateWithoutPostInput> | BlockCreateWithoutPostInput[] | BlockUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: BlockCreateOrConnectWithoutPostInput | BlockCreateOrConnectWithoutPostInput[]
+    createMany?: BlockCreateManyPostInputEnvelope
+    connect?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
   }
 
   export type CommentUncheckedCreateNestedManyWithoutPostInput = {
@@ -16661,18 +16661,18 @@ export namespace Prisma {
     set?: Date | string | null
   }
 
-  export type PostBlockUpdateManyWithoutPostNestedInput = {
-    create?: XOR<PostBlockCreateWithoutPostInput, PostBlockUncheckedCreateWithoutPostInput> | PostBlockCreateWithoutPostInput[] | PostBlockUncheckedCreateWithoutPostInput[]
-    connectOrCreate?: PostBlockCreateOrConnectWithoutPostInput | PostBlockCreateOrConnectWithoutPostInput[]
-    upsert?: PostBlockUpsertWithWhereUniqueWithoutPostInput | PostBlockUpsertWithWhereUniqueWithoutPostInput[]
-    createMany?: PostBlockCreateManyPostInputEnvelope
-    set?: PostBlockWhereUniqueInput | PostBlockWhereUniqueInput[]
-    disconnect?: PostBlockWhereUniqueInput | PostBlockWhereUniqueInput[]
-    delete?: PostBlockWhereUniqueInput | PostBlockWhereUniqueInput[]
-    connect?: PostBlockWhereUniqueInput | PostBlockWhereUniqueInput[]
-    update?: PostBlockUpdateWithWhereUniqueWithoutPostInput | PostBlockUpdateWithWhereUniqueWithoutPostInput[]
-    updateMany?: PostBlockUpdateManyWithWhereWithoutPostInput | PostBlockUpdateManyWithWhereWithoutPostInput[]
-    deleteMany?: PostBlockScalarWhereInput | PostBlockScalarWhereInput[]
+  export type BlockUpdateManyWithoutPostNestedInput = {
+    create?: XOR<BlockCreateWithoutPostInput, BlockUncheckedCreateWithoutPostInput> | BlockCreateWithoutPostInput[] | BlockUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: BlockCreateOrConnectWithoutPostInput | BlockCreateOrConnectWithoutPostInput[]
+    upsert?: BlockUpsertWithWhereUniqueWithoutPostInput | BlockUpsertWithWhereUniqueWithoutPostInput[]
+    createMany?: BlockCreateManyPostInputEnvelope
+    set?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
+    disconnect?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
+    delete?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
+    connect?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
+    update?: BlockUpdateWithWhereUniqueWithoutPostInput | BlockUpdateWithWhereUniqueWithoutPostInput[]
+    updateMany?: BlockUpdateManyWithWhereWithoutPostInput | BlockUpdateManyWithWhereWithoutPostInput[]
+    deleteMany?: BlockScalarWhereInput | BlockScalarWhereInput[]
   }
 
   export type CommentUpdateManyWithoutPostNestedInput = {
@@ -16697,18 +16697,18 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPostsInput, UserUpdateWithoutPostsInput>, UserUncheckedUpdateWithoutPostsInput>
   }
 
-  export type PostBlockUncheckedUpdateManyWithoutPostNestedInput = {
-    create?: XOR<PostBlockCreateWithoutPostInput, PostBlockUncheckedCreateWithoutPostInput> | PostBlockCreateWithoutPostInput[] | PostBlockUncheckedCreateWithoutPostInput[]
-    connectOrCreate?: PostBlockCreateOrConnectWithoutPostInput | PostBlockCreateOrConnectWithoutPostInput[]
-    upsert?: PostBlockUpsertWithWhereUniqueWithoutPostInput | PostBlockUpsertWithWhereUniqueWithoutPostInput[]
-    createMany?: PostBlockCreateManyPostInputEnvelope
-    set?: PostBlockWhereUniqueInput | PostBlockWhereUniqueInput[]
-    disconnect?: PostBlockWhereUniqueInput | PostBlockWhereUniqueInput[]
-    delete?: PostBlockWhereUniqueInput | PostBlockWhereUniqueInput[]
-    connect?: PostBlockWhereUniqueInput | PostBlockWhereUniqueInput[]
-    update?: PostBlockUpdateWithWhereUniqueWithoutPostInput | PostBlockUpdateWithWhereUniqueWithoutPostInput[]
-    updateMany?: PostBlockUpdateManyWithWhereWithoutPostInput | PostBlockUpdateManyWithWhereWithoutPostInput[]
-    deleteMany?: PostBlockScalarWhereInput | PostBlockScalarWhereInput[]
+  export type BlockUncheckedUpdateManyWithoutPostNestedInput = {
+    create?: XOR<BlockCreateWithoutPostInput, BlockUncheckedCreateWithoutPostInput> | BlockCreateWithoutPostInput[] | BlockUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: BlockCreateOrConnectWithoutPostInput | BlockCreateOrConnectWithoutPostInput[]
+    upsert?: BlockUpsertWithWhereUniqueWithoutPostInput | BlockUpsertWithWhereUniqueWithoutPostInput[]
+    createMany?: BlockCreateManyPostInputEnvelope
+    set?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
+    disconnect?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
+    delete?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
+    connect?: BlockWhereUniqueInput | BlockWhereUniqueInput[]
+    update?: BlockUpdateWithWhereUniqueWithoutPostInput | BlockUpdateWithWhereUniqueWithoutPostInput[]
+    updateMany?: BlockUpdateManyWithWhereWithoutPostInput | BlockUpdateManyWithWhereWithoutPostInput[]
+    deleteMany?: BlockScalarWhereInput | BlockScalarWhereInput[]
   }
 
   export type CommentUncheckedUpdateManyWithoutPostNestedInput = {
@@ -17596,7 +17596,7 @@ export namespace Prisma {
     published?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    blocks?: PostBlockCreateNestedManyWithoutPostInput
+    blocks?: BlockCreateNestedManyWithoutPostInput
     comments?: CommentCreateNestedManyWithoutPostInput
   }
 
@@ -17607,7 +17607,7 @@ export namespace Prisma {
     published?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    blocks?: PostBlockUncheckedCreateNestedManyWithoutPostInput
+    blocks?: BlockUncheckedCreateNestedManyWithoutPostInput
     comments?: CommentUncheckedCreateNestedManyWithoutPostInput
   }
 
@@ -17950,7 +17950,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Product"> | Date | string
   }
 
-  export type PostBlockCreateWithoutPostInput = {
+  export type BlockCreateWithoutPostInput = {
     id?: string
     type: $Enums.BlockType
     content: JsonNullValueInput | InputJsonValue
@@ -17959,7 +17959,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PostBlockUncheckedCreateWithoutPostInput = {
+  export type BlockUncheckedCreateWithoutPostInput = {
     id?: string
     type: $Enums.BlockType
     content: JsonNullValueInput | InputJsonValue
@@ -17968,13 +17968,13 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PostBlockCreateOrConnectWithoutPostInput = {
-    where: PostBlockWhereUniqueInput
-    create: XOR<PostBlockCreateWithoutPostInput, PostBlockUncheckedCreateWithoutPostInput>
+  export type BlockCreateOrConnectWithoutPostInput = {
+    where: BlockWhereUniqueInput
+    create: XOR<BlockCreateWithoutPostInput, BlockUncheckedCreateWithoutPostInput>
   }
 
-  export type PostBlockCreateManyPostInputEnvelope = {
-    data: PostBlockCreateManyPostInput | PostBlockCreateManyPostInput[]
+  export type BlockCreateManyPostInputEnvelope = {
+    data: BlockCreateManyPostInput | BlockCreateManyPostInput[]
   }
 
   export type CommentCreateWithoutPostInput = {
@@ -18039,33 +18039,33 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
   }
 
-  export type PostBlockUpsertWithWhereUniqueWithoutPostInput = {
-    where: PostBlockWhereUniqueInput
-    update: XOR<PostBlockUpdateWithoutPostInput, PostBlockUncheckedUpdateWithoutPostInput>
-    create: XOR<PostBlockCreateWithoutPostInput, PostBlockUncheckedCreateWithoutPostInput>
+  export type BlockUpsertWithWhereUniqueWithoutPostInput = {
+    where: BlockWhereUniqueInput
+    update: XOR<BlockUpdateWithoutPostInput, BlockUncheckedUpdateWithoutPostInput>
+    create: XOR<BlockCreateWithoutPostInput, BlockUncheckedCreateWithoutPostInput>
   }
 
-  export type PostBlockUpdateWithWhereUniqueWithoutPostInput = {
-    where: PostBlockWhereUniqueInput
-    data: XOR<PostBlockUpdateWithoutPostInput, PostBlockUncheckedUpdateWithoutPostInput>
+  export type BlockUpdateWithWhereUniqueWithoutPostInput = {
+    where: BlockWhereUniqueInput
+    data: XOR<BlockUpdateWithoutPostInput, BlockUncheckedUpdateWithoutPostInput>
   }
 
-  export type PostBlockUpdateManyWithWhereWithoutPostInput = {
-    where: PostBlockScalarWhereInput
-    data: XOR<PostBlockUpdateManyMutationInput, PostBlockUncheckedUpdateManyWithoutPostInput>
+  export type BlockUpdateManyWithWhereWithoutPostInput = {
+    where: BlockScalarWhereInput
+    data: XOR<BlockUpdateManyMutationInput, BlockUncheckedUpdateManyWithoutPostInput>
   }
 
-  export type PostBlockScalarWhereInput = {
-    AND?: PostBlockScalarWhereInput | PostBlockScalarWhereInput[]
-    OR?: PostBlockScalarWhereInput[]
-    NOT?: PostBlockScalarWhereInput | PostBlockScalarWhereInput[]
-    id?: StringFilter<"PostBlock"> | string
-    postId?: StringFilter<"PostBlock"> | string
-    type?: EnumBlockTypeFilter<"PostBlock"> | $Enums.BlockType
-    content?: JsonFilter<"PostBlock">
-    position?: IntFilter<"PostBlock"> | number
-    createdAt?: DateTimeFilter<"PostBlock"> | Date | string
-    updatedAt?: DateTimeFilter<"PostBlock"> | Date | string
+  export type BlockScalarWhereInput = {
+    AND?: BlockScalarWhereInput | BlockScalarWhereInput[]
+    OR?: BlockScalarWhereInput[]
+    NOT?: BlockScalarWhereInput | BlockScalarWhereInput[]
+    id?: StringFilter<"Block"> | string
+    postId?: StringFilter<"Block"> | string
+    type?: EnumBlockTypeFilter<"Block"> | $Enums.BlockType
+    content?: JsonFilter<"Block">
+    position?: IntFilter<"Block"> | number
+    createdAt?: DateTimeFilter<"Block"> | Date | string
+    updatedAt?: DateTimeFilter<"Block"> | Date | string
   }
 
   export type CommentUpsertWithWhereUniqueWithoutPostInput = {
@@ -18190,7 +18190,7 @@ export namespace Prisma {
     published?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    blocks?: PostBlockCreateNestedManyWithoutPostInput
+    blocks?: BlockCreateNestedManyWithoutPostInput
     author: UserCreateNestedOneWithoutPostsInput
   }
 
@@ -18202,7 +18202,7 @@ export namespace Prisma {
     published?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    blocks?: PostBlockUncheckedCreateNestedManyWithoutPostInput
+    blocks?: BlockUncheckedCreateNestedManyWithoutPostInput
   }
 
   export type PostCreateOrConnectWithoutCommentsInput = {
@@ -18315,7 +18315,7 @@ export namespace Prisma {
     published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    blocks?: PostBlockUpdateManyWithoutPostNestedInput
+    blocks?: BlockUpdateManyWithoutPostNestedInput
     author?: UserUpdateOneRequiredWithoutPostsNestedInput
   }
 
@@ -18327,7 +18327,7 @@ export namespace Prisma {
     published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    blocks?: PostBlockUncheckedUpdateManyWithoutPostNestedInput
+    blocks?: BlockUncheckedUpdateManyWithoutPostNestedInput
   }
 
   export type UserUpsertWithoutCommentsInput = {
@@ -18629,7 +18629,7 @@ export namespace Prisma {
     published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    blocks?: PostBlockUpdateManyWithoutPostNestedInput
+    blocks?: BlockUpdateManyWithoutPostNestedInput
     comments?: CommentUpdateManyWithoutPostNestedInput
   }
 
@@ -18640,7 +18640,7 @@ export namespace Prisma {
     published?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    blocks?: PostBlockUncheckedUpdateManyWithoutPostNestedInput
+    blocks?: BlockUncheckedUpdateManyWithoutPostNestedInput
     comments?: CommentUncheckedUpdateManyWithoutPostNestedInput
   }
 
@@ -18814,7 +18814,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PostBlockCreateManyPostInput = {
+  export type BlockCreateManyPostInput = {
     id?: string
     type: $Enums.BlockType
     content: JsonNullValueInput | InputJsonValue
@@ -18832,7 +18832,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PostBlockUpdateWithoutPostInput = {
+  export type BlockUpdateWithoutPostInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: EnumBlockTypeFieldUpdateOperationsInput | $Enums.BlockType
     content?: JsonNullValueInput | InputJsonValue
@@ -18841,7 +18841,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PostBlockUncheckedUpdateWithoutPostInput = {
+  export type BlockUncheckedUpdateWithoutPostInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: EnumBlockTypeFieldUpdateOperationsInput | $Enums.BlockType
     content?: JsonNullValueInput | InputJsonValue
@@ -18850,7 +18850,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PostBlockUncheckedUpdateManyWithoutPostInput = {
+  export type BlockUncheckedUpdateManyWithoutPostInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: EnumBlockTypeFieldUpdateOperationsInput | $Enums.BlockType
     content?: JsonNullValueInput | InputJsonValue

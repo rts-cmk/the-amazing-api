@@ -17,7 +17,7 @@ Work in branches and name them following these rules:
 
 Always make sure you have the latest version of the code downloaded before you create a new branch.
 
-## Convetions
+## Conventions
 Follow the conventions already established in the project. This means file naming conventions as well as naming conventions for variables, Prisma Schemas, etc.
 
 ## Formatters
@@ -32,5 +32,5 @@ Make sure to use [this version](https://github.com/Kong/insomnia/releases/tag/co
 
 There is a script in package.json for updating the interactive documentation:
 ```console
-npm run generate-docs
+npm run generate-v1-docs
 ```

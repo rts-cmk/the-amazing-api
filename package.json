@@ -1,6 +1,6 @@
 {
   "name": "the-amazing-api",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "type": "module",
@@ -17,7 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^6.6.0",
+    "@prisma/client": "^6.7.0",
     "bcrypt": "^5.1.1",
     "body-parser": "^2.2.0",
     "cli-progress": "^3.12.0",
@@ -26,7 +26,6 @@
     "express-formidable": "^1.2.0",
     "formidable": "^3.5.2",
     "jose": "^6.0.10",
-    "prisma": "^6.6.0",
     "sharp": "^0.34.1",
     "uuid": "^11.1.0",
     "zod": "^3.24.2"
@@ -34,6 +33,7 @@
   "devDependencies": {
     "express-winston": "^4.2.0",
     "nodemon": "^3.1.9",
+    "prisma": "^6.7.0",
     "winston": "^3.17.0"
   }
 }

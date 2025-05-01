@@ -134,6 +134,73 @@ export async function getAllMedia(request, response, next) {
 	}
 }
 
+export async function updateMedia(request, response, next) {
+	const patchMediaSchema = z.object({
+		name: z.string().min(1).optional(),
+		description: z.string().optional(),
+	})
+
+	const id = request.params.id
+	if (!id) {
+		return response.status(400).json({ error: "ID is required" })
+	}
+
+	const form = new IncomingForm({
+		uploadDir: UPLOAD_DIR,
+		keepExtensions: true,
+		filename: (name, ext, part) => {
+			const base = path.basename(part.originalFilename, ext)
+			const clean = base.replace(/\s+/g, "_")
+			const finalName = `${clean}-${Date.now()}${ext}`
+			return finalName
+		}
+	})
+
+	form.parse(request, async (err, fields, files) => {
+		if (err) {
+			console.error(err)
+			return response.status(500).end()
+		}
+
+		try {
+			const media = await prisma.media.findUnique({ where: { id } })
+			if (!media) {
+				return response.status(404).json({ error: "Media not found" })
+			}
+
+			// Parse fields through Zod
+			const parsedFields = patchMediaSchema.safeParse({
+				name: fields.name?.[0],
+				description: fields.description?.[0],
+			})
+
+			if (!parsedFields.success) {
+				return response.status(400).json({ error: parsedFields.error.flatten() })
+			}
+
+			const data = parsedFields.data
+
+			// Include file data only if a file was uploaded
+			if (files.file?.[0]) {
+				data.filename = files.file[0].newFilename
+				data.mimetype = files.file[0].mimetype
+				data.size = files.file[0].size
+				data.url = "http://localhost:4000/media/" + files.file[0].newFilename
+			}
+
+			const updatedMedia = await prisma.media.update({
+				where: { id },
+				data,
+			})
+
+			response.json(updatedMedia)
+		} catch (error) {
+			console.error(error)
+			response.status(500).end()
+		}
+	})
+}
+
 export async function deleteMedia(request, response, next) {
 	const id = request.params.id
 	if (!id) {

@@ -1,4 +1,4 @@
-import { createMedia, deleteMedia, getAllMedia, getMediaFile, getSingleMedia } from "../controllers/media.controller.js"
+import { createMedia, deleteMedia, getAllMedia, getMediaFile, getSingleMedia, updateMedia } from "../controllers/media.controller.js"
 import { isAuthenticated, isEditorOrAdmin } from "../middleware/auth.middleware.js"
 
 export default function (router) {
@@ -6,5 +6,6 @@ export default function (router) {
 	router.get("/api/v1/media", getAllMedia)
 	router.get("/api/v1/media/:id", getSingleMedia)
 	router.get("/media/:filename", getMediaFile)
+	router.patch("/api/v1/media/:id", isAuthenticated, isEditorOrAdmin, updateMedia)
 	router.delete("/api/v1/media/:id", isAuthenticated, isEditorOrAdmin, deleteMedia)
 }

@@ -7,7 +7,7 @@ import fs from "fs"
 import sharp from "sharp"
 import { getNavLinks } from "../lib/nav-links.js"
 
-const UPLOAD_DIR = path.join(process.cwd(), 'usermedia')
+const UPLOAD_DIR = path.join(process.cwd(), "usermedia")
 if (!fs.existsSync(UPLOAD_DIR)) {
 	fs.mkdirSync(UPLOAD_DIR, { recursive: true })
 }
@@ -158,10 +158,10 @@ export async function deleteMedia(request, response, next) {
 }
 
 function getMediaType(mime) {
-	if (!mime) return 'OTHER'
-	if (mime.startsWith('image/')) return 'IMAGE'
-	if (mime.startsWith('video/')) return 'VIDEO'
-	if (mime.startsWith('audio/')) return 'AUDIO'
-	if (mime.includes('pdf') || mime.includes('ms') || mime.includes('word')) return 'DOCUMENT'
-	return 'OTHER'
+	if (!mime) return "OTHER"
+	if (mime.startsWith("image/")) return "IMAGE"
+	if (mime.startsWith("video/")) return "VIDEO"
+	if (mime.startsWith("audio/")) return "AUDIO"
+	if (mime.includes("pdf") || mime.includes("ms") || mime.includes("word")) return "DOCUMENT"
+	return "OTHER"
 }

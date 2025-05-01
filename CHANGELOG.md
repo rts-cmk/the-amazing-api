@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * makedb bash script
 * db:generate npm script
 
+### Removed
+* All prisma generated files and folders
+
 ## [0.1.0] - 2025-04-30
 ### Added
 * Patch and delete methods for the products resource.

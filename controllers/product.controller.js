@@ -184,11 +184,35 @@ export async function updateProduct(request, response, next) {
 	if (validated.data.length) data.length = validated.data.length
 	if (validated.data.stock) data.stock = validated.data.stock
 	if (validated.data.published === false || validated.data.published === true) data.published = validated.data.published
-	if (validated.data.media) data.media = {
-		connect: validated.data.media.map(media => ({ id: media.id }))
-	}
 
 	try {
+		const existingProduct = await prisma.product.findUnique({
+			where: { slug: validated.data.slug },
+			include: { media: true }
+		})
+		if (!existingProduct) return response.status(404).end()
+
+		let mediaConnect = []
+		let mediaDisconnect = []
+
+		if (validated.data.media) {
+			const incomingIds = validated.data.media.map(m => m.id)
+			const existingIds = existingProduct.media.map(m => m.id)
+
+			mediaConnect = incomingIds
+				.filter(id => !existingIds.includes(id))
+				.map(id => ({ id }))
+
+			mediaDisconnect = existingIds
+				.filter(id => !incomingIds.includes(id))
+				.map(id => ({ id }))
+		}
+
+		if (validated.data.media) data.media = {
+			connect: mediaConnect,
+			disconnect: mediaDisconnect
+		}
+
 		const product = await prisma.product.update({
 			where: {
 				slug: validated.data.slug,
@@ -198,7 +222,7 @@ export async function updateProduct(request, response, next) {
 				media: true
 			}
 		})
-		if (!product) return response.status(404).end()
+
 		response.json(product)
 	} catch (error) {
 		console.error(error)

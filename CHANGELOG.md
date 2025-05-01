@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * db:generate npm script
 * the product controller createProduct now supports adding media to the resource
 * the product controller updateProduct now supports adding media to an existing resource
+* the product controller updateProduct now supports removing media from an existing resource
 
 ### Removed
 * All prisma generated files and folders

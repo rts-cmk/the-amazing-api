@@ -5,10 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon bin/www",
-    "start": "node bin/www",
-    "generate-v1-docs": "npx insomnia-documenter --config ./insomnia-export-v1.json -o ./public/docs/v1 && cp ./public/docs/_v1.html ./public/docs/v1/index.html && rm -f ./public/docs/v1/favicon.ico && cp ./public/images/the_amazing_api_logo.png ./public/docs/v1/logo.png",
-    "reset-db": "rm -rf ./generated && rm -rf ./database.db && npx prisma generate && npx prisma db push && npx prisma db seed"
+    "dev": "npm run db:generate && nodemon bin/www",
+    "start": "npm run db:generate && node bin/www",
+    "db:generate": "bash ./bin/makedb",
+    "generate-v1-docs": "npx insomnia-documenter --config ./insomnia-export-v1.json -o ./public/docs/v1 && cp ./public/docs/_v1.html ./public/docs/v1/index.html && rm -f ./public/docs/v1/favicon.ico && cp ./public/images/the_amazing_api_logo.png ./public/docs/v1/logo.png"
   },
   "prisma": {
     "seed": "node prisma/seed.js"

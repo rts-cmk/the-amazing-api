@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# This script is used to generate a database for the project.
+# It will create a SQLite database and populate it with the necessary tables and sample content.
+# Usage: ./makedb
+
+if [ ! -d "generated" ] || [ ! -f "database.db" ]; then
+	echo "Generating database..."
+	rm -rf ./generated &&	rm -rf ./database.db && npx prisma generate && npx prisma db push && npx prisma db seed
+	echo "Database created."
+else
+	echo "Database already exists. No changes made."
+	echo "If you want to regenerate the database, please delete the generated directory and database.db file."
+	exit 1
+fi

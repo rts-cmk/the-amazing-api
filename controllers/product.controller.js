@@ -191,9 +191,12 @@ export async function updateProduct(request, response, next) {
 	try {
 		const product = await prisma.product.update({
 			where: {
-				slug: validated.data.slug
+				slug: validated.data.slug,
 			},
 			data,
+			include: {
+				media: true
+			}
 		})
 		if (!product) return response.status(404).end()
 		response.json(product)

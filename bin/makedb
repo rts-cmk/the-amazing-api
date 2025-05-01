@@ -6,7 +6,7 @@
 
 if [ ! -d "generated" ] || [ ! -f "database.db" ]; then
 	echo "Generating database..."
-	rm -rf ./generated &&	rm -rf ./database.db && npx prisma generate && npx prisma db push && npx prisma db seed
+	rm -rf ./generated &&	rm -rf ./database.db && npx prisma generate --no-hints && npx prisma db push && npx prisma db seed
 	echo "Database created."
 else
 	echo "Database already exists. No changes made."

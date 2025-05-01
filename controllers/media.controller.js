@@ -9,20 +9,20 @@ import { getNavLinks } from "../lib/nav-links.js"
 
 const UPLOAD_DIR = path.join(process.cwd(), 'usermedia')
 if (!fs.existsSync(UPLOAD_DIR)) {
-  fs.mkdirSync(UPLOAD_DIR, { recursive: true })
+	fs.mkdirSync(UPLOAD_DIR, { recursive: true })
 }
 
 export async function createMedia(request, response, next) {
 	const form = new IncomingForm({
-    uploadDir: UPLOAD_DIR,
-    keepExtensions: true,
-    filename: (name, ext, part) => {
-      const base = path.basename(part.originalFilename, ext)
-      const clean = base.replace(/\s+/g, "_")
-      const finalName = `${clean}-${Date.now()}${ext}`
-      return finalName
-    }
-  })
+		uploadDir: UPLOAD_DIR,
+		keepExtensions: true,
+		filename: (name, ext, part) => {
+			const base = path.basename(part.originalFilename, ext)
+			const clean = base.replace(/\s+/g, "_")
+			const finalName = `${clean}-${Date.now()}${ext}`
+			return finalName
+		}
+	})
 
 	const schema = z.object({
 		name: z.string().min(1),
@@ -58,7 +58,7 @@ export async function createMedia(request, response, next) {
 		}
 
 		const type = getMediaType(validated.data.file.mimetype)
-	
+
 		try {
 			const media = await prisma.media.create({
 				data: {
@@ -134,11 +134,34 @@ export async function getAllMedia(request, response, next) {
 	}
 }
 
+export async function deleteMedia(request, response, next) {
+	const id = request.params.id
+	if (!id) {
+		return response.status(400).json({ error: "ID is required" })
+	}
+
+	try {
+		const media = await prisma.media.findUnique({ where: { id } })
+		if (!media) {
+			return response.status(404).json({ error: "Media not found" })
+		}
+		await prisma.media.delete({ where: { id } })
+		const filepath = path.join(UPLOAD_DIR, media.filename)
+		if (fs.existsSync(filepath)) {
+			fs.unlinkSync(filepath)
+		}
+		response.status(204).end()
+	} catch (error) {
+		console.error(error)
+		response.status(500).end()
+	}
+}
+
 function getMediaType(mime) {
-  if (!mime) return 'OTHER'
-  if (mime.startsWith('image/')) return 'IMAGE'
-  if (mime.startsWith('video/')) return 'VIDEO'
-  if (mime.startsWith('audio/')) return 'AUDIO'
-  if (mime.includes('pdf') || mime.includes('ms') || mime.includes('word')) return 'DOCUMENT'
-  return 'OTHER'
+	if (!mime) return 'OTHER'
+	if (mime.startsWith('image/')) return 'IMAGE'
+	if (mime.startsWith('video/')) return 'VIDEO'
+	if (mime.startsWith('audio/')) return 'AUDIO'
+	if (mime.includes('pdf') || mime.includes('ms') || mime.includes('word')) return 'DOCUMENT'
+	return 'OTHER'
 }

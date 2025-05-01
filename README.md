@@ -19,7 +19,7 @@ npm install
 
 **Reset the database**. This will do a complete reset of all data and seed the database with a few startup records.
 ```console
-npm run reset-db
+npm run db:generate
 ```
 
 **Run the API**

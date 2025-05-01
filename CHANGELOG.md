@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Updated
 * .gitignore now ignores all prisma generated files and folders
+* POST /api/vq/products now has a check for correct content-type header
 
 ### Fixed
 * makedb bash script has been fixed. The problem was that it prevented later scripts from being executed

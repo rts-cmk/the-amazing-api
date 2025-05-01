@@ -6,17 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-
 ### Added
 * Media controller for deleting media files
 * makedb bash script
 * db:generate npm script
+* the product controller createProduct now supports adding media to the resource. 
 
 ### Removed
 * All prisma generated files and folders
 
 ### Updated
 * .gitignore now ignores all prisma generated files and folders
+
+### Fixed
+* makedb bash script has been fixed. The problem was that it prevented later scripts from being executed.
 
 ## [0.1.0] - 2025-04-30
 ### Added

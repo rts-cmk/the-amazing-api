@@ -4,6 +4,9 @@ import { getNavLinks } from "../lib/nav-links.js"
 import prisma from "../config/prisma.js"
 
 export async function createProduct(request, response, next) {
+	const contentType = request.headers["content-type"]
+	const fieldOrBody = contentType.includes("multipart/form-data") ? request.fields : request.body
+
 	const schema = z.object({
 		name: z.string().min(1),
 		description: z.string().min(1),
@@ -14,20 +17,24 @@ export async function createProduct(request, response, next) {
 		height: z.number().optional(),
 		width: z.number().optional(),
 		length: z.number().optional(),
-		stock: z.number().positive().optional()
+		stock: z.number().positive().optional(),
+		media: z.array(z.object({
+			id: z.string().min(1),
+		})).optional()
 	})
 
 	const validated = schema.safeParse({
-		name: request.fields.name,
-		description: request.fields.description,
-		sku: request.fields.sku,
-		price: parseFloat(request.fields.price),
-		saleprice: parseFloat(request.fields.saleprice),
-		weight: parseFloat(request.fields.weight),
-		height: parseFloat(request.fields.height),
-		width: parseFloat(request.fields.width),
-		length: parseFloat(request.fields.length),
-		stock: parseInt(request.fields.stock)
+		name: fieldOrBody.name,
+		description: fieldOrBody.description,
+		sku: fieldOrBody.sku,
+		price: fieldOrBody.price ? parseFloat(fieldOrBody.price) : undefined,
+		saleprice: fieldOrBody.saleprice ? parseFloat(fieldOrBody.saleprice) : undefined,
+		weight: fieldOrBody.weight ? parseFloat(fieldOrBody.weight) : undefined,
+		height: fieldOrBody.height ? parseFloat(fieldOrBody.height) : undefined,
+		width: fieldOrBody.width ? parseFloat(fieldOrBody.width) : undefined,
+		length: fieldOrBody.length ? parseFloat(fieldOrBody.length) : undefined,
+		stock: fieldOrBody.stock ? parseInt(fieldOrBody.stock) : undefined,
+		media: fieldOrBody.media ? fieldOrBody.media.map(media => ({ id: media.id })) : undefined
 	})
 
 	if (!validated.success) {
@@ -44,11 +51,18 @@ export async function createProduct(request, response, next) {
 				sku: validated.data.sku,
 				description: validated.data.description,
 				price: validated.data.price,
+				saleprice: validated.data.saleprice >= 0 ? validated.data.saleprice : undefined,
 				weight: parseFloat(validated.data.weight),
 				height: parseFloat(validated.data.height),
 				width: parseFloat(validated.data.width),
 				length: parseFloat(validated.data.length),
-				stock: parseInt(validated.data.stock)
+				stock: parseInt(validated.data.stock),
+				media: {
+					connect: validated.data.media ? validated.data.media.map(media => ({ id: media.id })) : undefined
+				},
+			},
+			include: {
+				media: true
 			}
 		})
 		response.status(201).json(product)
@@ -128,6 +142,9 @@ export async function updateProduct(request, response, next) {
 		length: z.number().optional(),
 		stock: z.number().positive().optional(),
 		published: z.boolean().optional(),
+		media: z.array(z.object({
+			id: z.string().min(1),
+		})).optional(),
 		slug: z.string().min(1)
 	})
 
@@ -136,13 +153,14 @@ export async function updateProduct(request, response, next) {
 		description: fieldOrBody.description,
 		sku: fieldOrBody.sku,
 		price: fieldOrBody.price ? parseFloat(fieldOrBody.price) : undefined,
-		saleprice: parseFloat(fieldOrBody.saleprice),
+		saleprice: fieldOrBody.saleprice ? parseFloat(fieldOrBody.saleprice) : undefined,
 		weight: fieldOrBody.weight ? parseFloat(fieldOrBody.weight) : undefined,
 		height: fieldOrBody.height ? parseFloat(fieldOrBody.height) : undefined,
 		width: fieldOrBody.width ? parseFloat(fieldOrBody.width) : undefined,
 		length: fieldOrBody.length ? parseFloat(fieldOrBody.length) : undefined,
 		stock: fieldOrBody.stock ? parseInt(fieldOrBody.stock) : undefined,
 		published: fieldOrBody.published == "true",
+		media: fieldOrBody.media ? fieldOrBody.media.map(media => ({ id: media.id })) : undefined,
 		slug: request.params.slug
 	})
 
@@ -166,6 +184,9 @@ export async function updateProduct(request, response, next) {
 	if (validated.data.length) data.length = validated.data.length
 	if (validated.data.stock) data.stock = validated.data.stock
 	if (validated.data.published === false || validated.data.published === true) data.published = validated.data.published
+	if (validated.data.media) data.media = {
+		connect: validated.data.media.map(media => ({ id: media.id }))
+	}
 
 	try {
 		const product = await prisma.product.update({
